@@ -1,0 +1,62 @@
+$primaryColor: #4527a4;
+
+// Common CSS
+html{
+    scroll-behavior: smooth;
+}
+
+// Dashicon
+.dashicons{
+    font-family: dashicons !important;
+}
+
+// Alert Box
+.wp-block-pcb-price-calculator{
+    .pcbPriceCalculator{
+        display: inline-block;
+
+        .pcbHeading{
+            margin: 0;
+        }
+
+        .pcbQuantity{
+            display: flex;
+            align-items: center;
+            margin: 20px 0 10px;
+
+            .pcbQuantityLabel{
+                margin: 0;
+                margin-right: 8px;
+            }
+
+            .pcbQuantityAmount{
+                margin: 0;
+            }
+        }
+
+        .pcbQuantityRange{
+            min-width: 150px;
+            width: 50%;
+            max-width: 100%;
+
+            &:focus-visible{
+                outline: none;
+            }
+        }
+
+        .pcbTotal{
+            display: flex;
+            align-items: center;
+            margin: 20px 0 10px;
+
+            .pcbTotalPrice{
+                margin: 0;
+                margin-right: 8px;
+            }
+
+            .pcbTotalLabel{
+                margin: 0;
+            }
+        }
+    }
+}

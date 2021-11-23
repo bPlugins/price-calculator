@@ -1,1 +1,51 @@
 $primaryColor: #4527a4;
+
+
+
+.bPlPanelBody.addRemoveItems{
+    .addItem{
+        text-align: center;
+        background: $primaryColor;
+
+        button{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+
+            &:focus{
+                box-shadow: none;
+            }
+            &:active{
+                color: #fff;
+            }
+
+            .dashicon{
+                margin-top: 5px;
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .itemAction{
+        .removeItem, .duplicateItem{
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 5px 10px;
+            
+            .dashicon, svg{
+                margin-right: 5px;
+            }
+        }
+
+        .removeItem{
+            background-color: red;
+        }
+        .duplicateItem{
+            background-color: $primaryColor;
+        }
+    }
+}

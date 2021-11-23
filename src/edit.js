@@ -1,18 +1,42 @@
-import { useState, useEffect } from '@wordpress/element';
+import { useState, useEffect, useRef, createContext } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
+import { sortBy } from 'lodash';
 
 import Settings from './settings';
 
+export const QuantityContext = createContext();
+
 const Edit = props => {
-    const { className, attributes: { width, alignment, background, textAlign, padding, border, shadow, heading, headingTypo, headingColor, unitPrice, maxQuantity, quantityLabel, totalPriceLabel, numberTypo, labelTypo, numberLabelColor }, setAttributes, clientId } = props;
+    const { className, attributes: { width, alignment, background, textAlign, padding, border, shadow, heading, headingTypo, headingColor, maxQuantity, unitPrice, unitPriceQuery, quantityLabel, totalPriceLabel, numberTypo, labelTypo, numberLabelColor, rangeWidth, rangeTrackBG, rangeThumbBG }, setAttributes, clientId } = props;
 
     useEffect(() => { clientId && setAttributes({ cId: clientId }); }, [clientId]); // Set & Update clientId to cId
 
     const [quantity, setQuantity] = useState(250);
+    const totalPriceRef = useRef(null);
+
+    useEffect(() => {
+        const sortedUnitPriceQuery = sortBy(unitPriceQuery, ['afterQuantity', 'unitPrice']);
+
+        totalPriceRef.current.innerText = `$${(quantity * unitPrice).toFixed(2)}`;
+
+        for (let i = 0; i < sortedUnitPriceQuery.length; i++) {
+            const afterQuantity = parseFloat(sortedUnitPriceQuery[i].afterQuantity);
+            const price = parseFloat(sortedUnitPriceQuery[i].unitPrice);
+
+            if (afterQuantity <= quantity) {
+                totalPriceRef.current.innerText = `$${(quantity * price).toFixed(2)}`;
+            }
+        }
+    }, [totalPriceRef, unitPrice, unitPriceQuery, quantity]);
+
+    const rangeTrackBGStyle = rangeTrackBG?.styles || 'background-image: radial-gradient(#70777f, #40444f);';
+    const rangeThumbBGStyle = rangeThumbBG?.styles || 'background-image: radial-gradient(#70777f, #40444f);';
 
     return <>
-        <Settings settings={props} />
+        <QuantityContext.Provider value={[quantity, setQuantity]}>
+            <Settings attributes={props.attributes} setAttributes={setAttributes} clientId={clientId} />
+        </QuantityContext.Provider>
 
         <div className={className} id={`pcbPriceCalculator-${clientId}`}>
             <style dangerouslySetInnerHTML={{
@@ -28,7 +52,7 @@ const Edit = props => {
                     width: ${'0px' === width || '0%' === width || '0em' === width ? 'auto' : width};
                     ${background?.styles || 'background-color: #e3edf1;'}
                     text-align: ${textAlign};
-                    padding: ${padding?.styles || '15px 30px'};
+                    padding: ${padding?.styles || '25px 30px'};
                     ${border?.styles || 'border-radius: 3px;'}
                     box-shadow: ${shadow?.styles || 'none'};
                 }
@@ -46,6 +70,22 @@ const Edit = props => {
                 #pcbPriceCalculator-${clientId} .pcbPriceCalculator .pcbQuantity .pcbQuantityLabel, #pcbPriceCalculator-${clientId} .pcbPriceCalculator .pcbTotal .pcbTotalLabel{
                     ${labelTypo?.styles || 'font-size: 15px;'}
                 }
+
+                #pcbPriceCalculator-${clientId} .pcbPriceCalculator .pcbQuantityRange{
+                    width: ${rangeWidth}
+                }
+
+                #pcbPriceCalculator-${clientId} .pcbPriceCalculator .pcbQuantityRange:focus::-webkit-slider-runnable-track{ ${rangeTrackBGStyle} }
+                #pcbPriceCalculator-${clientId} .pcbPriceCalculator .pcbQuantityRange:focus::-ms-fill-upper{ ${rangeTrackBGStyle} }
+                #pcbPriceCalculator-${clientId} .pcbPriceCalculator .pcbQuantityRange:focus:focus::-ms-fill-lower{ ${rangeTrackBGStyle} }
+                #pcbPriceCalculator-${clientId} .pcbPriceCalculator .pcbQuantityRange::-webkit-slider-runnable-track{ ${rangeTrackBGStyle} }
+                #pcbPriceCalculator-${clientId} .pcbPriceCalculator .pcbQuantityRange::-moz-range-track{ ${rangeTrackBGStyle} }
+                #pcbPriceCalculator-${clientId} .pcbPriceCalculator .pcbQuantityRange::-ms-fill-upper{ ${rangeTrackBGStyle} }
+                #pcbPriceCalculator-${clientId} .pcbPriceCalculator .pcbQuantityRange::-ms-fill-lower{ ${rangeTrackBGStyle} }
+
+                #pcbPriceCalculator-${clientId} .pcbPriceCalculator .pcbQuantityRange::-webkit-slider-thumb{ ${rangeThumbBGStyle} }
+                #pcbPriceCalculator-${clientId} .pcbPriceCalculator .pcbQuantityRange:focus::-moz-range-thumb{ ${rangeThumbBGStyle} }
+                #pcbPriceCalculator-${clientId} .pcbPriceCalculator .pcbQuantityRange::-ms-thumb{ ${rangeThumbBGStyle} }
             `}} />
 
             <div className='pcbPriceCalculator'>
@@ -57,10 +97,10 @@ const Edit = props => {
                     <p className='pcbQuantityAmount'>{quantity}</p>
                 </div>
 
-                <input className='pcbQuantityRange' type='range' value={quantity} onChange={e => setQuantity(e.target.value)} min={1} max={maxQuantity} step={1} />
+                <input className='pcbQuantityRange' type='range' value={quantity} onChange={e => setQuantity(parseInt(e.target.value))} min={1} max={maxQuantity} step={1} />
 
                 <div className='pcbTotal'>
-                    <p className='pcbTotalPrice'>${(quantity * unitPrice).toFixed(2)}</p>
+                    <p className='pcbTotalPrice' ref={totalPriceRef}></p>
 
                     <RichText className='pcbTotalLabel' tagName='label' value={totalPriceLabel} onChange={val => setAttributes({ totalPriceLabel: val })} placeholder={__('Total Price', 'price-calculator')} inlineToolbar />
                 </div>

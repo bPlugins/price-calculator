@@ -10,6 +10,31 @@ html{
     font-family: dashicons !important;
 }
 
+$pcbRangeTrackHeight: 10px;
+$pcbRangeThumbSize: 24px;
+@mixin pcbRangeTrack{
+    width: 100%;
+    height: $pcbRangeTrackHeight;
+    transition: all 0.2s ease;
+    cursor: default;
+}
+@mixin pcbRangeTrackBBS{
+    background-image: radial-gradient(#70777f, #40444f);
+    border: none;
+    border-radius: 10px;
+    box-shadow: none;
+}
+@mixin pcbRangeThumb{
+    width: $pcbRangeThumbSize;
+    height: $pcbRangeThumbSize;
+    background-image: radial-gradient(#70777f, #40444f);
+    border: none;
+    border-radius: 50%;
+    box-sizing: border-box;
+    box-shadow: none;
+    cursor: default;
+}
+
 // Alert Box
 .wp-block-pcb-price-calculator{
     .pcbPriceCalculator{
@@ -35,12 +60,67 @@ html{
         }
 
         .pcbQuantityRange{
-            min-width: 150px;
-            width: 50%;
             max-width: 100%;
 
             &:focus-visible{
                 outline: none;
+            }
+
+            &{
+                -webkit-appearance: none;
+                background: transparent;
+                border: none;
+            }
+            &::-moz-focus-outer {
+                border: 0;
+            }
+            &:focus {
+                outline: 0;
+            }
+            &:focus::-webkit-slider-runnable-track {
+                background-image: radial-gradient(#70777f, #40444f);
+            }
+            &:focus::-ms-fill-upper {
+                background-image: radial-gradient(#70777f, #40444f);
+            }
+            &:focus::-ms-fill-lower {
+                background-image: radial-gradient(#70777f, #40444f);
+            }
+            &::-webkit-slider-runnable-track {
+                @include pcbRangeTrack;
+                @include pcbRangeTrackBBS;
+            }
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                @include pcbRangeThumb;
+                margin-top: -7px;
+            }
+            &::-moz-range-track {
+                @include pcbRangeTrack;
+                @include pcbRangeTrackBBS;
+            }
+            &::-moz-range-thumb {
+                @include pcbRangeThumb;
+            }
+            &::-ms-track {
+                @include pcbRangeTrack;
+                color: transparent;
+                background: transparent;
+                border-width: 12px 0;
+                border-color: transparent;
+            }
+            &::-ms-fill-upper {
+                @include pcbRangeTrackBBS;
+            }
+            &::-ms-fill-lower {
+                @include pcbRangeTrackBBS;
+            }
+            &::-ms-thumb {
+                @include pcbRangeThumb;
+                margin-top: 2px;
+            }
+            &:disabled::-webkit-slider-thumb, &:disabled::-moz-range-thumb, &:disabled::-ms-thumb, &:disabled::-webkit-slider-runnable-track, &:disabled::-ms-fill-lower, &:disabled::-ms-fill-upper {
+                cursor: not-allowed;
             }
         }
 

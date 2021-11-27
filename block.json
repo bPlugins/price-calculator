@@ -1,6 +1,6 @@
 {
     "apiVersion": "1",
-    "name": "pcb/price-calculator",
+    "name": "pclb/price-calculator",
     "title": "Price Calculator",
     "description": "Calculate price of products based on quantity.",
     "category": "widgets",
@@ -57,7 +57,7 @@
         "heading": {
             "type": "string",
             "default": "Price Calculator",
-            "selector": ".pcbPriceCalculator .pcbHeading"
+            "selector": ".pclbPriceCalculator .pclbHeading"
         },
         "headingTypo": {
             "type": "object",

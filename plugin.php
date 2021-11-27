@@ -14,11 +14,11 @@
 if ( !defined( 'ABSPATH' ) ) { exit; }
 
 // Constant
-define( 'PCB_PLUGIN_VERSION', 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.1' );
-define( 'PCB_ASSETS_DIR', plugin_dir_url( __FILE__ ) . 'assets/' );
+define( 'PCLB_PLUGIN_VERSION', 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.1' );
+define( 'PCLB_ASSETS_DIR', plugin_dir_url( __FILE__ ) . 'assets/' );
 
 // Generate Styles
-class PCBStyleGenerator {
+class PCLBStyleGenerator {
     public static $styles = [];
     public static function addStyle( $selector, $styles ){
         if( array_key_exists( $selector, self::$styles ) ){
@@ -39,7 +39,7 @@ class PCBStyleGenerator {
 }
 
 // Price Calculator
-class PCBPriceCalculator{
+class PCLBPriceCalculator{
     protected static $_instance = null;
 
     function __construct(){
@@ -54,22 +54,22 @@ class PCBPriceCalculator{
     }
 
     function register() {
-        wp_register_script( 'pcb_editor_script', plugins_url( 'dist/editor.js', __FILE__ ), [ 'wp-blob', 'wp-block-editor', 'wp-blocks', 'wp-components', 'wp-compose', 'wp-data', 'wp-element', 'wp-html-entities', 'wp-i18n', 'wp-rich-text', 'lodash' ], PCB_PLUGIN_VERSION, false ); // Backend Script
-        wp_register_style( 'pcb_editor_style', plugins_url( 'dist/editor.css', __FILE__ ), [ 'wp-edit-blocks' ], PCB_PLUGIN_VERSION ); // Backend Style
-        wp_register_script( 'pcb_script', plugins_url( 'dist/script.js', __FILE__ ), [ 'lodash' ], PCB_PLUGIN_VERSION, true ); // Frontend Script
-        wp_register_style( 'pcb_style', plugins_url( 'dist/style.css', __FILE__ ), [ 'wp-editor' ], PCB_PLUGIN_VERSION ); // Frontend Style
+        wp_register_script( 'pclb_editor_script', plugins_url( 'dist/editor.js', __FILE__ ), [ 'wp-blob', 'wp-block-editor', 'wp-blocks', 'wp-components', 'wp-compose', 'wp-data', 'wp-element', 'wp-html-entities', 'wp-i18n', 'wp-rich-text', 'lodash' ], PCLB_PLUGIN_VERSION, false ); // Backend Script
+        wp_register_style( 'pclb_editor_style', plugins_url( 'dist/editor.css', __FILE__ ), [ 'wp-edit-blocks' ], PCLB_PLUGIN_VERSION ); // Backend Style
+        wp_register_script( 'pclb_script', plugins_url( 'dist/script.js', __FILE__ ), [ 'lodash' ], PCLB_PLUGIN_VERSION, true ); // Frontend Script
+        wp_register_style( 'pclb_style', plugins_url( 'dist/style.css', __FILE__ ), [ 'wp-editor' ], PCLB_PLUGIN_VERSION ); // Frontend Style
 
         wp_enqueue_script( 'lodash' );
 
-        register_block_type( 'pcb/price-calculator', [
-            'editor_script' => 'pcb_editor_script',
-            'editor_style'  => 'pcb_editor_style',
-            'script'        => 'pcb_script',
-            'style'         => 'pcb_style',
+        register_block_type( 'pclb/price-calculator', [
+            'editor_script' => 'pclb_editor_script',
+            'editor_style'  => 'pclb_editor_style',
+            'script'        => 'pclb_script',
+            'style'         => 'pclb_style',
             'render_callback' => [$this, 'render']
         ] ); // Register Block
         
-        wp_set_script_translations( 'pcb_editor_script', 'price-calculator', plugin_dir_path( __FILE__ ) . 'languages' ); // Translate
+        wp_set_script_translations( 'pclb_editor_script', 'price-calculator', plugin_dir_path( __FILE__ ) . 'languages' ); // Translate
     }
 
     function render( $attributes ){
@@ -96,11 +96,11 @@ class PCBPriceCalculator{
         $rangeTrackBG = $rangeTrackBG ?? [ 'gradient' => 'radial-gradient(#70777f, #40444f)' ];
         $rangeThumbBG = $rangeThumbBG ?? [ 'gradient' => 'radial-gradient(#70777f, #40444f)' ];
 
-        $priceCalculatorStyle = new PCBStyleGenerator(); // Generate Styles
-        $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId", [
+        $priceCalculatorStyle = new PCLBStyleGenerator(); // Generate Styles
+        $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId", [
             'text-align' => $alignment
         ] );
-        $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator", [
+        $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator", [
             'width' => '0px' === $width || '0%' === $width || '0em' === $width ? 'auto' : $width,
             $background['styles'] ?? 'background-color: #e3edf1;' => '',
             'text-align' => $textAlign,
@@ -108,55 +108,55 @@ class PCBPriceCalculator{
             $border['styles'] ?? 'border-radius: 3px;' => '',
             'box-shadow' => $shadow['styles'] ?? 'none'
         ] );
-        $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator .pcbHeading", [
+        $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbHeading", [
             $headingTypo['styles'] ?? 'font-size: 28px;' => '',
             'color' => $headingColor
         ] );
-        $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator .pcbQuantity, #pcbPriceCalculator-$cId .pcbPriceCalculator .pcbTotal", [
+        $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantity, #pclbPriceCalculator-$cId .pclbPriceCalculator .pclbTotal", [
             'color' => $numberLabelColor
         ] );
-        $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator .pcbQuantity .pcbQuantityAmount, #pcbPriceCalculator-$cId .pcbPriceCalculator .pcbTotal .pcbTotalPrice", [
+        $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantity .pclbQuantityAmount, #pclbPriceCalculator-$cId .pclbPriceCalculator .pclbTotal .pclbTotalPrice", [
             $numberTypo['styles'] ?? 'font-size: 20px; font-weight: 700;' => ''
         ] );
-        $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator .pcbQuantity .pcbQuantityLabel, #pcbPriceCalculator-$cId .pcbPriceCalculator .pcbTotal .pcbTotalLabel", [
+        $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantity .pclbQuantityLabel, #pclbPriceCalculator-$cId .pclbPriceCalculator .pclbTotal .pclbTotalLabel", [
             $labelTypo['styles'] ?? 'font-size: 15px;' => ''
         ] );
 
-        $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator .pcbQuantityRange", [ 'width' => $rangeWidth ] );
+        $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantityRange", [ 'width' => $rangeWidth ] );
         
         $rangeTrackBGStyle = [ $rangeTrackBG['styles'] ?? 'background-image: radial-gradient(#70777f, #40444f);' => '' ];
-        $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator .pcbQuantityRange:focus::-webkit-slider-runnable-track", $rangeTrackBGStyle );
-        $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator .pcbQuantityRange:focus::-ms-fill-upper", $rangeTrackBGStyle );
-        $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator .pcbQuantityRange:focus:focus::-ms-fill-lower", $rangeTrackBGStyle );
-        $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator .pcbQuantityRange::-webkit-slider-runnable-track", $rangeTrackBGStyle );
-        $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator .pcbQuantityRange::-moz-range-track", $rangeTrackBGStyle );
-        $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator .pcbQuantityRange::-ms-fill-upper", $rangeTrackBGStyle );
-        $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator .pcbQuantityRange::-ms-fill-lower", $rangeTrackBGStyle );
+        $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantityRange:focus::-webkit-slider-runnable-track", $rangeTrackBGStyle );
+        $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantityRange:focus::-ms-fill-upper", $rangeTrackBGStyle );
+        $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantityRange:focus:focus::-ms-fill-lower", $rangeTrackBGStyle );
+        $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantityRange::-webkit-slider-runnable-track", $rangeTrackBGStyle );
+        $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantityRange::-moz-range-track", $rangeTrackBGStyle );
+        $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantityRange::-ms-fill-upper", $rangeTrackBGStyle );
+        $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantityRange::-ms-fill-lower", $rangeTrackBGStyle );
         
         $rangeThumbBGStyle = [ $rangeThumbBG['styles'] ?? 'background-image: radial-gradient(#70777f, #40444f);' => '' ];
-        $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator .pcbQuantityRange::-webkit-slider-thumb", $rangeThumbBGStyle );
-        $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator .pcbQuantityRange::-moz-range-thumb", $rangeThumbBGStyle );
-        $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator .pcbQuantityRange::-ms-thumb", $rangeThumbBGStyle );
+        $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantityRange::-webkit-slider-thumb", $rangeThumbBGStyle );
+        $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantityRange::-moz-range-thumb", $rangeThumbBGStyle );
+        $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantityRange::-ms-thumb", $rangeThumbBGStyle );
 
         ob_start(); ?>
-        <div class='wp-block-pcb-price-calculator <?php echo 'align' . esc_attr( $align ); ?>' id='pcbPriceCalculator-<?php echo esc_attr( $cId ) ?>' data-price-calculator='<?php echo wp_json_encode( [ 'maxQuantity' => $maxQuantity, 'unitPrice' => $unitPrice ?? 15, 'unitPriceQuery' => $unitPriceQuery ?? [ [ 'afterQuantity' => 20, 'unitPrice' => 10 ] ] ] ); ?>'>
+        <div class='wp-block-pclb-price-calculator <?php echo 'align' . esc_attr( $align ); ?>' id='pclbPriceCalculator-<?php echo esc_attr( $cId ) ?>' data-price-calculator='<?php echo wp_json_encode( [ 'maxQuantity' => $maxQuantity, 'unitPrice' => $unitPrice ?? 15, 'unitPriceQuery' => $unitPriceQuery ?? [ [ 'afterQuantity' => 20, 'unitPrice' => 10 ] ] ] ); ?>'>
             <style>@import url( <?php echo esc_url( $headingTypo['googleFontLink'] ?? '' ); ?> ); @import url( <?php echo esc_url( $numberTypo['googleFontLink'] ?? '' ); ?> ); @import url( <?php echo esc_url( $labelTypo['googleFontLink'] ?? '' ); ?> ); <?php echo wp_kses( $priceCalculatorStyle::renderStyle(), [] ) ?></style>
 
-            <div class='pcbPriceCalculator'>
-                <h2 class='pcbHeading'><?php echo wp_kses_post( $heading ); ?></h2>
+            <div class='pclbPriceCalculator'>
+                <h2 class='pclbHeading'><?php echo wp_kses_post( $heading ); ?></h2>
 
-                <div class='pcbQuantity'>
-                    <label class='pcbQuantityLabel'><?php echo wp_kses_post( $quantityLabel ); ?></label>
+                <div class='pclbQuantity'>
+                    <label class='pclbQuantityLabel'><?php echo wp_kses_post( $quantityLabel ); ?></label>
 
-                    <p class='pcbQuantityAmount'></p>
+                    <p class='pclbQuantityAmount'></p>
                 </div>
 
-                <input class='pcbQuantityRange' type='range' min='1' max="<?php echo esc_html( $maxQuantity ); ?>" step='1' />
+                <input class='pclbQuantityRange' type='range' min='1' max="<?php echo esc_html( $maxQuantity ); ?>" step='1' />
 
-                <div class='pcbTotal'>
-                    <p class='pcbTotalPrice'></p>
+                <div class='pclbTotal'>
+                    <p class='pclbTotalPrice'></p>
 
-                    <label class='pcbTotalLabel'><?php echo wp_kses_post( $totalPriceLabel ); ?></label>
+                    <label class='pclbTotalLabel'><?php echo wp_kses_post( $totalPriceLabel ); ?></label>
                 </div>
             </div>
         </div>
@@ -165,4 +165,4 @@ class PCBPriceCalculator{
         return ob_get_clean();
     } // Render
 }
-PCBPriceCalculator::instance();
+PCLBPriceCalculator::instance();

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Price Calculator - Gutenberg Block
  * Description: Calculate price of products based on quantity
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: bPlugins LLC
  * Author URI: http://bplugins.com
  * License: GPLv3
@@ -14,7 +14,7 @@
 if ( !defined( 'ABSPATH' ) ) { exit; }
 
 // Constant
-define( 'PCB_PLUGIN_VERSION', 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.0' );
+define( 'PCB_PLUGIN_VERSION', 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.1' );
 define( 'PCB_ASSETS_DIR', plugin_dir_url( __FILE__ ) . 'assets/' );
 
 // Generate Styles
@@ -135,7 +135,7 @@ class PCBPriceCalculator{
         
         $rangeThumbBGStyle = [ $rangeThumbBG['styles'] ?? 'background-image: radial-gradient(#70777f, #40444f);' => '' ];
         $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator .pcbQuantityRange::-webkit-slider-thumb", $rangeThumbBGStyle );
-        $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator .pcbQuantityRange:focus::-moz-range-thumb", $rangeThumbBGStyle );
+        $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator .pcbQuantityRange::-moz-range-thumb", $rangeThumbBGStyle );
         $priceCalculatorStyle::addStyle( "#pcbPriceCalculator-$cId .pcbPriceCalculator .pcbQuantityRange::-ms-thumb", $rangeThumbBGStyle );
 
         ob_start(); ?>

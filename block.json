@@ -118,12 +118,14 @@
         "rangeTrackBG": {
             "type": "object",
             "default": {
+                "type": "gradient",
                 "gradient": "radial-gradient(#70777f, #40444f)"
             }
         },
         "rangeThumbBG": {
             "type": "object",
             "default": {
+                "type": "gradient",
                 "gradient": "radial-gradient(#70777f, #40444f)"
             }
         }

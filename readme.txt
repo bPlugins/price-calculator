@@ -1,32 +1,31 @@
 === Price Calculator - Gutenberg Price Calculator Block ===
 Contributors: abuhayat, charlescormier
 Donate link: https://gum.co/wpdonate/
-Tags: block, alert, alert box, alert box block, Gutenberg block
+Tags: block, price calculator, price calculate, quantity calculator, Gutenberg block
 Requires at least: 5.0+
-Tested up to: 5.8.1
-Stable tag: 1.0.2
+Tested up to: 5.8.2
+Stable tag: 1.0.1
 Requires PHP: 7.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
+Calculate the price based on single quantity or many quantity. 
 
 == Description ==
 
-Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
+Calculate the price based on single quantity or many quantity. 
 
 
-**[Demos](https://bblockswp.com/demo/alert/)**
+**[Demos](https://bblockswp.com/demo/price-calculator/)**
 
 
 = Features =
 - **Fully Customizable**: All the options you need to arrange the showcase to your liking are available here.
-- **Different Types**: Alert box block comes with different types, you can easily switch the type of alert box.
 
 
 = How to use =
-- First install the Alert Box Block plugin
-- Add the Alert Box Block from the block category called "Widgets" in Gutenberg editor.
+- First install the Price Calculator block plugin
+- Add the Price Calculator block from the block category called "Widgets" in Gutenberg editor.
 - You can change block settings from the right side settings sidebar.
 - Enjoy!
 
@@ -59,25 +58,25 @@ Provide contextual feedback messages for typical user actions with the handful o
 
 = From Gutenberg Editor: =
 1. Go to the WordPress Block/Gutenberg Editor
-2. Search For **Alert Box Block**
-3. Click on the **Alert Box Block** to add the block
+2. Search For **Price Calculator**
+3. Click on the **Price Calculator** to add the block
 
 = Download & Upload: =
-1. Download the **Alert Box Block** plugin (*.zip file*)
+1. Download the **Price Calculator** block plugin (*.zip file*)
 2. In your admin area, go to the Plugins menu and click on **Add New**
-3. Click on **Upload Plugin** and choose the **`alert-box-block.zip`** file and click on **Install Now**
+3. Click on **Upload Plugin** and choose the **`price-calculator.zip`** file and click on **Install Now**
 4. Activate the plugin and Enjoy!
 
 = Manually: =
-1. Download and upload the **Alert Box Block** plugin to the **`/wp-content/plugins/`** directory
+1. Download and upload the **Price Calculator** block plugin to the **`/wp-content/plugins/`** directory
 2. Activate the plugin through the Plugins menu in WordPress
 
 
 == Frequently Asked Questions ==
 
-= Is Alert Box Block free? =
+= Is Price Calculator block free? =
 
-Yes, Alert Box Block is a free Gutenberg block plugin.
+Yes, Price Calculator block is a free Gutenberg block plugin.
 
 = Does it work with any WordPress theme? =
 
@@ -93,23 +92,21 @@ You can use unlimited times as you want.
 
 = Where can I get support? =
 
-You can post your questions on the [support forum here](https://wordpress.org/support/plugin/alert-box-block/)
+You can post your questions on the [support forum here](https://wordpress.org/support/plugin/price-calculator/)
 
 
 == Screenshots ==
 
-1. All Alerts
-2. Without dismissible & Text center
-3. Alert Settings
+1. Default
+2. Customize Range
+3. Customize
+4. Settings
 
 
 == Changelog ==
 
-= 1.0.2 =
-* Performance upgrade
-
 = 1.0.1 =
-* Update theme
+* Fix Range Style
 
 = 1.0.0 =
 * Initial Release
@@ -117,11 +114,8 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 
 == Upgrade Notice ==
 
-= 1.0.2 =
-* Performance upgrade
-
 = 1.0.1 =
-* Update theme
+* Fix Range Style
 
 = 1.0.0 =
 * Initial Release

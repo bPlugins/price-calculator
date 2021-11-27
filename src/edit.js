@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, createContext } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
-import { sortBy } from 'lodash';
 
 import Settings from './settings';
 
@@ -16,7 +15,7 @@ const Edit = props => {
     const totalPriceRef = useRef(null);
 
     useEffect(() => {
-        const sortedUnitPriceQuery = sortBy(unitPriceQuery, ['afterQuantity', 'unitPrice']);
+        const sortedUnitPriceQuery = lodash.sortBy(unitPriceQuery, ['afterQuantity', 'unitPrice']);
 
         totalPriceRef.current.innerText = `$${(quantity * unitPrice).toFixed(2)}`;
 
@@ -84,7 +83,7 @@ const Edit = props => {
                 #pcbPriceCalculator-${clientId} .pcbPriceCalculator .pcbQuantityRange::-ms-fill-lower{ ${rangeTrackBGStyle} }
 
                 #pcbPriceCalculator-${clientId} .pcbPriceCalculator .pcbQuantityRange::-webkit-slider-thumb{ ${rangeThumbBGStyle} }
-                #pcbPriceCalculator-${clientId} .pcbPriceCalculator .pcbQuantityRange:focus::-moz-range-thumb{ ${rangeThumbBGStyle} }
+                #pcbPriceCalculator-${clientId} .pcbPriceCalculator .pcbQuantityRange::-moz-range-thumb{ ${rangeThumbBGStyle} }
                 #pcbPriceCalculator-${clientId} .pcbPriceCalculator .pcbQuantityRange::-ms-thumb{ ${rangeThumbBGStyle} }
             `}} />
 

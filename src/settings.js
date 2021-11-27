@@ -117,9 +117,9 @@ const Settings = ({ attributes, setAttributes }) => {
             <PanelBody className='bPlPanelBody' title={__('Quantity Range Style', 'price-calculator')} initialOpen={false}>
                 <UnitControl label={__('Width:', 'price-calculator')} labelPosition='left' value={rangeWidth} onChange={val => setAttributes({ rangeWidth: val })} units={[pxUnit, perUnit, emUnit]} />
 
-                <Background label={__('Track Background', 'advanced-post-block')} background={rangeTrackBG} onChange={val => setAttributes({ rangeTrackBG: val })} defaults={{ gradient: 'radial-gradient(#70777f, #40444f)' }} isImage={false} />
+                <Background label={__('Track Background', 'advanced-post-block')} background={rangeTrackBG} onChange={val => setAttributes({ rangeTrackBG: val })} defaults={{ type: 'gradient', gradient: 'radial-gradient(#70777f, #40444f)' }} isImage={false} />
 
-                <Background label={__('Thumb Background', 'advanced-post-block')} background={rangeThumbBG} onChange={val => setAttributes({ rangeThumbBG: val })} defaults={{ gradient: 'radial-gradient(#70777f, #40444f)' }} isImage={false} />
+                <Background label={__('Thumb Background', 'advanced-post-block')} background={rangeThumbBG} onChange={val => setAttributes({ rangeThumbBG: val })} defaults={{ type: 'gradient', gradient: 'radial-gradient(#70777f, #40444f)' }} isImage={false} />
 
                 <small>{__('Some style may not work in editor/backend!')}</small>
             </PanelBody>

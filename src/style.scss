@@ -19,7 +19,7 @@ $pcbRangeThumbSize: 24px;
     cursor: default;
 }
 @mixin pcbRangeTrackBBS{
-    background-image: radial-gradient(#70777f, #40444f);
+    // background-image: radial-gradient(#70777f, #40444f);
     border: none;
     border-radius: 10px;
     box-shadow: none;
@@ -27,7 +27,7 @@ $pcbRangeThumbSize: 24px;
 @mixin pcbRangeThumb{
     width: $pcbRangeThumbSize;
     height: $pcbRangeThumbSize;
-    background-image: radial-gradient(#70777f, #40444f);
+    // background-image: radial-gradient(#70777f, #40444f);
     border: none;
     border-radius: 50%;
     box-sizing: border-box;
@@ -77,15 +77,15 @@ $pcbRangeThumbSize: 24px;
             &:focus {
                 outline: 0;
             }
-            &:focus::-webkit-slider-runnable-track {
-                background-image: radial-gradient(#70777f, #40444f);
-            }
-            &:focus::-ms-fill-upper {
-                background-image: radial-gradient(#70777f, #40444f);
-            }
-            &:focus::-ms-fill-lower {
-                background-image: radial-gradient(#70777f, #40444f);
-            }
+            // &:focus::-webkit-slider-runnable-track {
+            //     background-image: radial-gradient(#70777f, #40444f);
+            // }
+            // &:focus::-ms-fill-upper {
+            //     background-image: radial-gradient(#70777f, #40444f);
+            // }
+            // &:focus::-ms-fill-lower {
+            //     background-image: radial-gradient(#70777f, #40444f);
+            // }
             &::-webkit-slider-runnable-track {
                 @include pcbRangeTrack;
                 @include pcbRangeTrackBBS;

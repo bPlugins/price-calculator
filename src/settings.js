@@ -3,8 +3,6 @@ import { useContext } from '@wordpress/element';
 import { AlignmentToolbar, BlockControls, InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, PanelRow, RangeControl, Button, Dashicon, __experimentalUnitControl as UnitControl, __experimentalNumberControl as NumberControl } from '@wordpress/components';
 
-import { QuantityContext } from './edit';
-
 // Variables
 import Title from '../../Components/Title';
 import Background from '../../Components/Background';
@@ -16,8 +14,9 @@ import Typography from '../../Components/Typography';
 import options from './Const/options';
 const { pxUnit, perUnit, emUnit } = options;
 
-// Icons
 import icons from './Const/icons';
+
+import { QuantityContext } from './edit';
 
 const Settings = ({ attributes, setAttributes }) => {
     const { width, alignment, background, textAlign, padding, border, shadow, headingTypo, headingColor, maxQuantity, unitPrice, unitPriceQuery, numberTypo, labelTypo, numberLabelColor, rangeWidth, rangeTrackBG, rangeThumbBG } = attributes;
@@ -88,7 +87,7 @@ const Settings = ({ attributes, setAttributes }) => {
                 <UnitControl label={__('Width:', 'price-calculator')} labelPosition='left' value={width} onChange={val => setAttributes({ width: val })} units={[pxUnit, perUnit, emUnit]} />
                 <small>{__('Keep width 0, to auto width.', 'price-calculator')}</small>
 
-                <Background label={__('Background', 'advanced-post-block')} background={background} onChange={val => setAttributes({ background: val })} defaults={{ color: '#e3edf1' }} />
+                <Background label={__('Background', 'price-calculator')} background={background} onChange={val => setAttributes({ background: val })} defaults={{ color: '#e3edf1' }} />
 
                 <SpaceControl className='mt20' label={__('Padding:', 'price-calculator')} space={padding} onChange={val => setAttributes({ padding: val })} defaults={{ vertical: '25px', horizontal: '30px' }} />
 
@@ -117,9 +116,9 @@ const Settings = ({ attributes, setAttributes }) => {
             <PanelBody className='bPlPanelBody' title={__('Quantity Range Style', 'price-calculator')} initialOpen={false}>
                 <UnitControl label={__('Width:', 'price-calculator')} labelPosition='left' value={rangeWidth} onChange={val => setAttributes({ rangeWidth: val })} units={[pxUnit, perUnit, emUnit]} />
 
-                <Background label={__('Track Background', 'advanced-post-block')} background={rangeTrackBG} onChange={val => setAttributes({ rangeTrackBG: val })} defaults={{ type: 'gradient', gradient: 'radial-gradient(#70777f, #40444f)' }} isImage={false} />
+                <Background label={__('Track Background', 'price-calculator')} background={rangeTrackBG} onChange={val => setAttributes({ rangeTrackBG: val })} defaults={{ type: 'gradient', gradient: 'radial-gradient(#70777f, #40444f)' }} isImage={false} />
 
-                <Background label={__('Thumb Background', 'advanced-post-block')} background={rangeThumbBG} onChange={val => setAttributes({ rangeThumbBG: val })} defaults={{ type: 'gradient', gradient: 'radial-gradient(#70777f, #40444f)' }} isImage={false} />
+                <Background label={__('Thumb Background', 'price-calculator')} background={rangeThumbBG} onChange={val => setAttributes({ rangeThumbBG: val })} defaults={{ type: 'gradient', gradient: 'radial-gradient(#70777f, #40444f)' }} isImage={false} />
 
                 <small>{__('Some style may not work in editor/backend!')}</small>
             </PanelBody>
@@ -127,9 +126,9 @@ const Settings = ({ attributes, setAttributes }) => {
 
         <BlockControls>
             <AlignmentToolbar value={alignment} onChange={val => setAttributes({ alignment: val })} describedBy={__('Price Calculator Alignment')} alignmentControls={[
-                { title: __('Price Calculator in left', 'b-blocks'), align: 'left', icon: 'align-left' },
-                { title: __('Price Calculator in center', 'b-blocks'), align: 'center', icon: 'align-center' },
-                { title: __('Price Calculator in right', 'b-blocks'), align: 'right', icon: 'align-right' }
+                { title: __('Price Calculator in left', 'price-calculator'), align: 'left', icon: 'align-left' },
+                { title: __('Price Calculator in center', 'price-calculator'), align: 'center', icon: 'align-center' },
+                { title: __('Price Calculator in right', 'price-calculator'), align: 'right', icon: 'align-right' }
             ]} />
 
             <AlignmentToolbar value={textAlign} onChange={val => setAttributes({ textAlign: val })} />

@@ -3,17 +3,18 @@ Contributors: abuhayat, charlescormier
 Donate link: https://gum.co/wpdonate/
 Tags: block, price calculator, price calculate, quantity calculator, Gutenberg block
 Requires at least: 5.0+
-Tested up to: 5.8.2
-Stable tag: 1.0.1
+Tested up to: 5.9
+Stable tag: 1.0.2
 Requires PHP: 7.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Calculate the price based on single quantity or many quantity. 
+Create and display pricing calculator sliders on your website.
 
 == Description ==
 
-Calculate the price based on single quantity or many quantity. 
+Create and display pricing calculator sliders on your website. It supports all the options related to any price calculator.
+You can create different pricing rules on different quantities, e.g if you sell 1 unit with a price of 10 then you probably offer a discount when a customer buys 5 pice, so you can create a pricing rule on the basis of the quantity. 
 
 
 **[Demos](https://bblockswp.com/demo/price-calculator/)**
@@ -105,6 +106,9 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 
 == Changelog ==
 
+= 1.0.2 =
+* Performance upgrade
+
 = 1.0.1 =
 * Fix Range Style
 
@@ -113,6 +117,9 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 
 
 == Upgrade Notice ==
+
+= 1.0.2 =
+* Performance upgrade
 
 = 1.0.1 =
 * Fix Range Style

@@ -1,3 +1,4 @@
 # Ignore everything
-node_modules
+bundled
 dist
+node_modules

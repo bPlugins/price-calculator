@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef, createContext } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import { createContext, useState, useEffect, useRef } from '@wordpress/element';
 import { RichText } from '@wordpress/block-editor';
 
 import Settings from './settings';
@@ -34,7 +34,7 @@ const Edit = props => {
 
     return <>
         <QuantityContext.Provider value={[quantity, setQuantity]}>
-            <Settings attributes={props.attributes} setAttributes={setAttributes} clientId={clientId} />
+            <Settings attributes={props.attributes} setAttributes={setAttributes} />
         </QuantityContext.Provider>
 
         <div className={className} id={`pclbPriceCalculator-${clientId}`}>

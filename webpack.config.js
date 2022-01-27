@@ -38,7 +38,13 @@ module.exports = (env, argv) => {
         }, // Optimization
 
         plugins: [
-            new CleanWebpackPlugin(), // Re generate 'dist' folder
+            new CleanWebpackPlugin({
+                cleanOnceBeforeBuildPatterns: [
+                    '**/*',
+                    '!editor.asset.php',
+                    '!script.asset.php',
+                ]
+            }), // Re generate 'dist' folder
             new MiniCssExtractPlugin({
                 chunkFilename: '[id].css',
                 filename: (chunkData) => {

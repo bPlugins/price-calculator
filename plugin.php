@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Price Calculator - Gutenberg Block
  * Description: Calculate price of products based on quantity
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: bPlugins LLC
  * Author URI: http://bplugins.com
  * License: GPLv3
@@ -14,7 +14,7 @@
 if ( !defined( 'ABSPATH' ) ) { exit; }
 
 // Constant
-define( 'PCLB_PLUGIN_VERSION', 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.1' );
+define( 'PCLB_PLUGIN_VERSION', 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.2' );
 define( 'PCLB_ASSETS_DIR', plugin_dir_url( __FILE__ ) . 'assets/' );
 
 // Generate Styles
@@ -54,47 +54,22 @@ class PCLBPriceCalculator{
     }
 
     function register() {
-        wp_register_script( 'pclb_editor_script', plugins_url( 'dist/editor.js', __FILE__ ), [ 'wp-blob', 'wp-block-editor', 'wp-blocks', 'wp-components', 'wp-compose', 'wp-data', 'wp-element', 'wp-html-entities', 'wp-i18n', 'wp-rich-text', 'lodash' ], PCLB_PLUGIN_VERSION, false ); // Backend Script
-        wp_register_style( 'pclb_editor_style', plugins_url( 'dist/editor.css', __FILE__ ), [ 'wp-edit-blocks' ], PCLB_PLUGIN_VERSION ); // Backend Style
-        wp_register_script( 'pclb_script', plugins_url( 'dist/script.js', __FILE__ ), [ 'lodash' ], PCLB_PLUGIN_VERSION, true ); // Frontend Script
-        wp_register_style( 'pclb_style', plugins_url( 'dist/style.css', __FILE__ ), [ 'wp-editor' ], PCLB_PLUGIN_VERSION ); // Frontend Style
+        wp_register_style( 'pclb-price-calculator-editor-style', plugins_url( 'dist/editor.css', __FILE__ ), [ 'wp-edit-blocks' ], PCLB_PLUGIN_VERSION ); // Backend Style
+        wp_register_style( 'pclb-price-calculator-style', plugins_url( 'dist/style.css', __FILE__ ), [ 'wp-editor' ], PCLB_PLUGIN_VERSION ); // Frontend Style
 
         wp_enqueue_script( 'lodash' );
 
-        register_block_type( 'pclb/price-calculator', [
-            'editor_script' => 'pclb_editor_script',
-            'editor_style'  => 'pclb_editor_style',
-            'script'        => 'pclb_script',
-            'style'         => 'pclb_style',
-            'render_callback' => [$this, 'render']
+        register_block_type( __DIR__, [
+            'editor_style'      => 'pclb-price-calculator-editor-style',
+            'style'             => 'pclb-price-calculator-style',
+            'render_callback'   => [$this, 'render']
         ] ); // Register Block
         
-        wp_set_script_translations( 'pclb_editor_script', 'price-calculator', plugin_dir_path( __FILE__ ) . 'languages' ); // Translate
+        wp_set_script_translations( 'pclb-price-calculator-editor-script', 'price-calculator', plugin_dir_path( __FILE__ ) . 'languages' ); // Translate
     }
 
     function render( $attributes ){
         extract( $attributes );
-        $align = $align ?? '';
-        $cId = $cId ?? '';
-        $width = $width ?? '60%';
-        $alignment = $alignment ?? 'center';
-        $background = $background ?? [ 'color' => '#e3edf1' ];
-        $textAlign = $textAlign ?? 'left';
-        $padding = $padding ?? [ 'vertical' => '25px', 'horizontal' => '30px' ];
-        $border = $border ?? [ 'radius' => '3px' ];
-        $shadow = $shadow ?? [];
-        $heading = $heading ?? 'Price Calculator';
-        $headingTypo = $headingTypo ?? [ 'fontSize' => 28 ];
-        $headingColor = $headingColor ?? '#40444f';
-        $maxQuantity = $maxQuantity ?? 500;
-        $quantityLabel = $quantityLabel ?? 'Product Items:';
-        $totalPriceLabel = $totalPriceLabel ?? 'total price';
-        $numberTypo = $numberTypo ?? [ 'fontSize' => 20, 'fontWeight' => 700 ];
-        $labelTypo = $labelTypo ?? [ 'fontSize' => 15 ];
-        $numberLabelColor = $numberLabelColor ?? '#40444f';
-        $rangeWidth = $rangeWidth ?? '50%';
-        $rangeTrackBG = $rangeTrackBG ?? [ 'gradient' => 'radial-gradient(#70777f, #40444f)' ];
-        $rangeThumbBG = $rangeThumbBG ?? [ 'gradient' => 'radial-gradient(#70777f, #40444f)' ];
 
         $priceCalculatorStyle = new PCLBStyleGenerator(); // Generate Styles
         $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId", [
@@ -132,14 +107,14 @@ class PCLBPriceCalculator{
         $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantityRange::-moz-range-track", $rangeTrackBGStyle );
         $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantityRange::-ms-fill-upper", $rangeTrackBGStyle );
         $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantityRange::-ms-fill-lower", $rangeTrackBGStyle );
-        
+
         $rangeThumbBGStyle = [ $rangeThumbBG['styles'] ?? 'background-image: radial-gradient(#70777f, #40444f);' => '' ];
         $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantityRange::-webkit-slider-thumb", $rangeThumbBGStyle );
         $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantityRange::-moz-range-thumb", $rangeThumbBGStyle );
         $priceCalculatorStyle::addStyle( "#pclbPriceCalculator-$cId .pclbPriceCalculator .pclbQuantityRange::-ms-thumb", $rangeThumbBGStyle );
 
         ob_start(); ?>
-        <div class='wp-block-pclb-price-calculator <?php echo 'align' . esc_attr( $align ); ?>' id='pclbPriceCalculator-<?php echo esc_attr( $cId ) ?>' data-price-calculator='<?php echo wp_json_encode( [ 'maxQuantity' => $maxQuantity, 'unitPrice' => $unitPrice ?? 15, 'unitPriceQuery' => $unitPriceQuery ?? [ [ 'afterQuantity' => 20, 'unitPrice' => 10 ] ] ] ); ?>'>
+        <div class='wp-block-pclb-price-calculator <?php echo 'align' . esc_attr( $align ); ?>' id='pclbPriceCalculator-<?php echo esc_attr( $cId ) ?>' data-price-calculator='<?php echo wp_json_encode( [ 'maxQuantity' => $maxQuantity, 'unitPrice' => $unitPrice, 'unitPriceQuery' => $unitPriceQuery ] ); ?>'>
             <style>@import url( <?php echo esc_url( $headingTypo['googleFontLink'] ?? '' ); ?> ); @import url( <?php echo esc_url( $numberTypo['googleFontLink'] ?? '' ); ?> ); @import url( <?php echo esc_url( $labelTypo['googleFontLink'] ?? '' ); ?> ); <?php echo wp_kses( $priceCalculatorStyle::renderStyle(), [] ) ?></style>
 
             <div class='pclbPriceCalculator'>

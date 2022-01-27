@@ -1,22 +1,19 @@
 import { registerBlockType } from '@wordpress/blocks';
 
-import Edit from './edit';
-
 // Import Files
+import Edit from './edit';
 import './editor.scss';
 
 // Icons
 import icons from './Const/icons';
-const icon = icons.priceCalculator;
 
 // Metadata
 import metadata from '../block.json';
-const { name, title, description, category, keywords, supports, attributes, example } = metadata;
 
-registerBlockType(name, {
-    title, description, icon, category, keywords, supports, attributes, example,
+registerBlockType(metadata, {
+    icon: icons.priceCalculator,
 
-    // Build In Functions
+    // Build in Functions
     edit: Edit,
 
     save: () => null

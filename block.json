@@ -142,6 +142,6 @@
             "preview": true
         }
     },
-    "editorScript": "file:./dist/editor.js",
-    "style": "file:./dist/style.css"
+    "editorScript": "file:dist/editor.js",
+    "script": "file:dist/script.js"
 }

@@ -7,7 +7,7 @@ import Settings from './settings';
 export const QuantityContext = createContext();
 
 const Edit = props => {
-    const { className, attributes: { width, alignment, background, textAlign, padding, border, shadow, heading, headingTypo, headingColor, maxQuantity, unitPrice, unitPriceQuery, quantityLabel, totalPriceLabel, numberTypo, labelTypo, numberLabelColor, rangeWidth, rangeTrackBG, rangeThumbBG }, setAttributes, clientId } = props;
+    const { className, attributes: { maxQuantity, unitPrice, unitPriceQuery, quantityLabel, totalPriceLabel, currency, width, alignment, background, textAlign, padding, border, shadow, heading, headingTypo, headingColor, numberTypo, labelTypo, numberLabelColor, rangeWidth, rangeTrackBG, rangeThumbBG }, setAttributes, clientId } = props;
 
     useEffect(() => { clientId && setAttributes({ cId: clientId }); }, [clientId]); // Set & Update clientId to cId
 
@@ -17,17 +17,17 @@ const Edit = props => {
     useEffect(() => {
         const sortedUnitPriceQuery = lodash.sortBy(unitPriceQuery, ['afterQuantity', 'unitPrice']);
 
-        totalPriceRef.current.innerText = `$${(quantity * unitPrice).toFixed(2)}`;
+        totalPriceRef.current.innerText = `${currency}${(quantity * unitPrice).toFixed(2)}`;
 
         for (let i = 0; i < sortedUnitPriceQuery.length; i++) {
             const afterQuantity = parseFloat(sortedUnitPriceQuery[i].afterQuantity);
             const price = parseFloat(sortedUnitPriceQuery[i].unitPrice);
 
             if (afterQuantity <= quantity) {
-                totalPriceRef.current.innerText = `$${(quantity * price).toFixed(2)}`;
+                totalPriceRef.current.innerText = `${currency}${(quantity * price).toFixed(2)}`;
             }
         }
-    }, [totalPriceRef, unitPrice, unitPriceQuery, quantity]);
+    }, [totalPriceRef, unitPrice, unitPriceQuery, currency, quantity]);
 
     const rangeTrackBGStyle = rangeTrackBG?.styles || 'background-image: radial-gradient(#70777f, #40444f);';
     const rangeThumbBGStyle = rangeThumbBG?.styles || 'background-image: radial-gradient(#70777f, #40444f);';

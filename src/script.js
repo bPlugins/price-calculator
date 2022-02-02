@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const allPriceCalculator = document.querySelectorAll('.wp-block-pclb-price-calculator');
     Object.values(allPriceCalculator).map(priceCalc => {
         const priceCalcEl = document.getElementById(priceCalc.id);
-        const { unitPrice, maxQuantity, unitPriceQuery } = JSON.parse(priceCalcEl.dataset.priceCalculator);
+        const { maxQuantity, unitPrice, unitPriceQuery, currency } = JSON.parse(priceCalcEl.dataset.priceCalculator);
 
         const pclbQuantityAmount = document.querySelector(`#${priceCalc.id} .pclbPriceCalculator .pclbQuantityAmount`);
         const pclbQuantityRange = document.querySelector(`#${priceCalc.id} .pclbPriceCalculator .pclbQuantityRange`);
@@ -14,13 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         pclbQuantityRange.value = (parseInt(maxQuantity) / 2).toFixed(0);
 
-        function calculatePrice() {
+        const calculatePrice = () => {
             const quantity = parseInt(pclbQuantityRange?.value);
             pclbQuantityAmount.innerText = quantity;
 
             const sortedUnitPriceQuery = lodash.sortBy(unitPriceQuery, ['afterQuantity', 'unitPrice']);
 
-            pclbTotalPrice.innerText = `$${(quantity * unitPrice).toFixed(2)}`;
+            pclbTotalPrice.innerText = `${currency}${(quantity * unitPrice).toFixed(2)}`;
 
             // const allQuantity = [];
             for (let i = 0; i < sortedUnitPriceQuery.length; i++) {
@@ -31,11 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 // allQuantity.push(afterQuantity);
 
                 if (afterQuantity <= quantity) {
-                    pclbTotalPrice.innerText = `$${(quantity * price).toFixed(2)}`;
+                    pclbTotalPrice.innerText = `${currency}${(quantity * price).toFixed(2)}`;
                     // } else if (lastAfterQuantity <= quantity) {
-                    //     pclbTotalPrice.innerText = `$${(quantity * lastPrice).toFixed(2)}`;
+                    //     pclbTotalPrice.innerText = `${currency}${(quantity * lastPrice).toFixed(2)}`;
                     // } else if (sortedUnitPriceQuery[0].afterQuantity > quantity) {
-                    //     pclbTotalPrice.innerText = `$${(quantity * unitPrice).toFixed(2)}`;
+                    //     pclbTotalPrice.innerText = `${currency}${(quantity * unitPrice).toFixed(2)}`;
                 }
             }
         }

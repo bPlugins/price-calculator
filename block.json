@@ -19,6 +19,35 @@
             "type": "string",
             "default": ""
         },
+        "maxQuantity": {
+            "type": "number",
+            "default": 500
+        },
+        "unitPrice": {
+            "type": "number",
+            "default": 15
+        },
+        "unitPriceQuery": {
+            "type": "array",
+            "default": [
+                {
+                    "afterQuantity": 20,
+                    "unitPrice": 10
+                }
+            ]
+        },
+        "quantityLabel": {
+            "type": "string",
+            "default": "Product Items:"
+        },
+        "totalPriceLabel": {
+            "type": "string",
+            "default": "total price"
+        },
+        "currency": {
+            "type": "string",
+            "default": "$"
+        },
         "width": {
             "type": "string",
             "default": "60%"
@@ -68,31 +97,6 @@
         "headingColor": {
             "type": "string",
             "default": "#40444f"
-        },
-        "maxQuantity": {
-            "type": "number",
-            "default": 500
-        },
-        "unitPrice": {
-            "type": "number",
-            "default": 15
-        },
-        "unitPriceQuery": {
-            "type": "array",
-            "default": [
-                {
-                    "afterQuantity": 20,
-                    "unitPrice": 10
-                }
-            ]
-        },
-        "quantityLabel": {
-            "type": "string",
-            "default": "Product Items:"
-        },
-        "totalPriceLabel": {
-            "type": "string",
-            "default": "total price"
         },
         "numberTypo": {
             "type": "object",

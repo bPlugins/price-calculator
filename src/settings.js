@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { useContext } from '@wordpress/element';
 import { AlignmentToolbar, BlockControls, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, RangeControl, Button, Dashicon, __experimentalUnitControl as UnitControl, __experimentalNumberControl as NumberControl } from '@wordpress/components';
+import { PanelBody, PanelRow, RangeControl, TextControl, __experimentalUnitControl as UnitControl, __experimentalNumberControl as NumberControl, Button, Dashicon } from '@wordpress/components';
 
 // Variables
 import Title from '../../Components/Title';
@@ -19,7 +19,7 @@ import icons from './Const/icons';
 import { QuantityContext } from './edit';
 
 const Settings = ({ attributes, setAttributes }) => {
-    const { width, alignment, background, textAlign, padding, border, shadow, headingTypo, headingColor, maxQuantity, unitPrice, unitPriceQuery, numberTypo, labelTypo, numberLabelColor, rangeWidth, rangeTrackBG, rangeThumbBG } = attributes;
+    const { maxQuantity, unitPrice, unitPriceQuery, currency, width, alignment, background, textAlign, padding, border, shadow, headingTypo, headingColor, numberTypo, labelTypo, numberLabelColor, rangeWidth, rangeTrackBG, rangeThumbBG } = attributes;
 
     const [quantity, setQuantity] = useContext(QuantityContext);
 
@@ -83,8 +83,13 @@ const Settings = ({ attributes, setAttributes }) => {
             </PanelBody>
 
 
-            <PanelBody className='bPlPanelBody' title={__('Price Calculator Style', 'price-calculator')} initialOpen={false}>
-                <UnitControl label={__('Width:', 'price-calculator')} labelPosition='left' value={width} onChange={val => setAttributes({ width: val })} units={[pxUnit, perUnit, emUnit]} />
+            <PanelBody className='bPlPanelBody' title={__('Price Calculator', 'price-calculator')} initialOpen={false}>
+                <PanelRow>
+                    <Title mt='0' mb='0'>{__('Currency:', 'price-calculator')}</Title>
+                    <TextControl value={currency} onChange={val => setAttributes({ currency: val })} />
+                </PanelRow>
+
+                <UnitControl className='mt20' label={__('Width:', 'price-calculator')} labelPosition='left' value={width} onChange={val => setAttributes({ width: val })} units={[pxUnit, perUnit, emUnit]} />
                 <small>{__('Keep width 0, to auto width.', 'price-calculator')}</small>
 
                 <Background label={__('Background', 'price-calculator')} background={background} onChange={val => setAttributes({ background: val })} defaults={{ color: '#e3edf1' }} />
@@ -123,6 +128,7 @@ const Settings = ({ attributes, setAttributes }) => {
                 <small>{__('Some style may not work in editor/backend!')}</small>
             </PanelBody>
         </InspectorControls>
+
 
         <BlockControls>
             <AlignmentToolbar value={alignment} onChange={val => setAttributes({ alignment: val })} describedBy={__('Price Calculator Alignment')} alignmentControls={[

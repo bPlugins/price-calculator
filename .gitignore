@@ -1,4 +1,5 @@
 # Ignore everything
 bundled
-dist
+dist/*
+!dist/*.php
 node_modules

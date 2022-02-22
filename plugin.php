@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Price Calculator - Gutenberg Block
  * Description: Calculate price of products based on quantity
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: bPlugins LLC
  * Author URI: http://bplugins.com
  * License: GPLv3
@@ -14,7 +14,7 @@
 if ( !defined( 'ABSPATH' ) ) { exit; }
 
 // Constant
-define( 'PCLB_PLUGIN_VERSION', 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.3' );
+define( 'PCLB_PLUGIN_VERSION', 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.4' );
 define( 'PCLB_ASSETS_DIR', plugin_dir_url( __FILE__ ) . 'assets/' );
 
 // Generate Styles
@@ -40,20 +40,11 @@ class PCLBStyleGenerator {
 
 // Price Calculator
 class PCLBPriceCalculator{
-    protected static $_instance = null;
-
     function __construct(){
-        add_action( 'init', [$this, 'register'] );
+        add_action( 'init', [$this, 'onInit'] );
     }
 
-    public static function instance(){
-        if( self::$_instance === null ){
-            self::$_instance = new self();
-        }
-        return self::$_instance;
-    }
-
-    function register() {
+    function onInit() {
         wp_register_style( 'pclb-price-calculator-editor-style', plugins_url( 'dist/editor.css', __FILE__ ), [ 'wp-edit-blocks' ], PCLB_PLUGIN_VERSION ); // Backend Style
         wp_register_style( 'pclb-price-calculator-style', plugins_url( 'dist/style.css', __FILE__ ), [ 'wp-editor' ], PCLB_PLUGIN_VERSION ); // Frontend Style
 
@@ -140,4 +131,4 @@ class PCLBPriceCalculator{
         return ob_get_clean();
     } // Render
 }
-PCLBPriceCalculator::instance();
+new PCLBPriceCalculator;

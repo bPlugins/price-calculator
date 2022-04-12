@@ -1,10 +1,10 @@
-=== Price Calculator - Gutenberg Price Calculator Block ===
+=== Price Calculator block - Calculate price of products based on quantity. ===
 Contributors: abuhayat, charlescormier
 Donate link: https://gum.co/wpdonate/
 Tags: block, price calculator, price calculate, quantity calculator, Gutenberg block
 Requires at least: 5.0+
-Tested up to: 5.9
-Stable tag: 1.0.4
+Tested up to: 5.9.3
+Stable tag: 1.0.5
 Requires PHP: 7.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -106,6 +106,10 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 
 == Changelog ==
 
+= 1.0.5 =
+* Reduce PHP Code
+* Performance Improvement
+
 = 1.0.4 =
 * Reduce PHP Code
 
@@ -123,6 +127,10 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 
 
 == Upgrade Notice ==
+
+= 1.0.5 =
+* Reduce PHP Code
+* Performance Improvement
 
 = 1.0.4 =
 * Reduce PHP Code

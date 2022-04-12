@@ -2,145 +2,145 @@ $primaryColor: #4527a4;
 
 // Common CSS
 html{
-    scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 // Dashicon
 .dashicons{
-    font-family: dashicons !important;
+	font-family: dashicons !important;
 }
 
 $pclbRangeTrackHeight: 10px;
 $pclbRangeThumbSize: 24px;
 @mixin pclbRangeTrack{
-    width: 100%;
-    height: $pclbRangeTrackHeight;
-    transition: all 0.2s ease;
-    cursor: default;
+	width: 100%;
+	height: $pclbRangeTrackHeight;
+	transition: all 0.2s ease;
+	cursor: default;
 }
 @mixin pclbRangeTrackBBS{
-    // background-image: radial-gradient(#70777f, #40444f);
-    border: none;
-    border-radius: 10px;
-    box-shadow: none;
+	// background-image: radial-gradient(#70777f, #40444f);
+	border: none;
+	border-radius: 10px;
+	box-shadow: none;
 }
 @mixin pclbRangeThumb{
-    width: $pclbRangeThumbSize;
-    height: $pclbRangeThumbSize;
-    // background-image: radial-gradient(#70777f, #40444f);
-    border: none;
-    border-radius: 50%;
-    box-sizing: border-box;
-    box-shadow: none;
-    cursor: default;
+	width: $pclbRangeThumbSize;
+	height: $pclbRangeThumbSize;
+	// background-image: radial-gradient(#70777f, #40444f);
+	border: none;
+	border-radius: 50%;
+	box-sizing: border-box;
+	box-shadow: none;
+	cursor: pointer;
 }
 
 // Alert Box
 .wp-block-pclb-price-calculator{
-    .pclbPriceCalculator{
-        display: inline-block;
+	.pclbPriceCalculator{
+		display: inline-block;
 
-        .pclbHeading{
-            margin: 0;
-        }
+		.pclbHeading{
+			margin: 0;
+		}
 
-        .pclbQuantity{
-            display: flex;
-            align-items: center;
-            margin: 20px 0 10px;
+		.pclbQuantity{
+			display: flex;
+			align-items: center;
+			margin: 20px 0 10px;
 
-            .pclbQuantityLabel{
-                margin: 0;
-                margin-right: 8px;
-            }
+			.pclbQuantityLabel{
+				margin: 0;
+				margin-right: 8px;
+			}
 
-            .pclbQuantityAmount{
-                color: inherit;
-                width: auto;
-                margin: 0;
-            }
-        }
+			.pclbQuantityAmount{
+				color: inherit;
+				width: auto;
+				margin: 0;
+			}
+		}
 
-        .pclbQuantityRange{
-            max-width: 100%;
+		.pclbQuantityRange{
+			max-width: 100%;
 
-            &:focus-visible{
-                outline: none;
-            }
+			&:focus-visible{
+				outline: none;
+			}
 
-            &{
-                -webkit-appearance: none;
-                background: transparent;
-                border: none;
-            }
-            &::-moz-focus-outer {
-                border: 0;
-            }
-            &:focus {
-                outline: 0;
-            }
-            // &:focus::-webkit-slider-runnable-track {
-            //     background-image: radial-gradient(#70777f, #40444f);
-            // }
-            // &:focus::-ms-fill-upper {
-            //     background-image: radial-gradient(#70777f, #40444f);
-            // }
-            // &:focus::-ms-fill-lower {
-            //     background-image: radial-gradient(#70777f, #40444f);
-            // }
-            &::-webkit-slider-runnable-track {
-                @include pclbRangeTrack;
-                @include pclbRangeTrackBBS;
-            }
-            &::-webkit-slider-thumb {
-                -webkit-appearance: none;
-                @include pclbRangeThumb;
-                margin-top: -7px;
-            }
-            &::-moz-range-track {
-                @include pclbRangeTrack;
-                @include pclbRangeTrackBBS;
-            }
-            &::-moz-range-thumb {
-                @include pclbRangeThumb;
-            }
-            &::-ms-track {
-                @include pclbRangeTrack;
-                color: transparent;
-                background: transparent;
-                border-width: 12px 0;
-                border-color: transparent;
-            }
-            &::-ms-fill-upper {
-                @include pclbRangeTrackBBS;
-            }
-            &::-ms-fill-lower {
-                @include pclbRangeTrackBBS;
-            }
-            &::-ms-thumb {
-                @include pclbRangeThumb;
-                margin-top: 2px;
-            }
-            &:disabled::-webkit-slider-thumb, &:disabled::-moz-range-thumb, &:disabled::-ms-thumb, &:disabled::-webkit-slider-runnable-track, &:disabled::-ms-fill-lower, &:disabled::-ms-fill-upper {
-                cursor: not-allowed;
-            }
-        }
+			&{
+				-webkit-appearance: none;
+				background: transparent;
+				border: none;
+			}
+			&::-moz-focus-outer {
+				border: 0;
+			}
+			&:focus {
+				outline: 0;
+			}
+			// &:focus::-webkit-slider-runnable-track {
+			//     background-image: radial-gradient(#70777f, #40444f);
+			// }
+			// &:focus::-ms-fill-upper {
+			//     background-image: radial-gradient(#70777f, #40444f);
+			// }
+			// &:focus::-ms-fill-lower {
+			//     background-image: radial-gradient(#70777f, #40444f);
+			// }
+			&::-webkit-slider-runnable-track {
+				@include pclbRangeTrack;
+				@include pclbRangeTrackBBS;
+			}
+			&::-webkit-slider-thumb {
+				-webkit-appearance: none;
+				@include pclbRangeThumb;
+				margin-top: -7px;
+			}
+			&::-moz-range-track {
+				@include pclbRangeTrack;
+				@include pclbRangeTrackBBS;
+			}
+			&::-moz-range-thumb {
+				@include pclbRangeThumb;
+			}
+			&::-ms-track {
+				@include pclbRangeTrack;
+				color: transparent;
+				background: transparent;
+				border-width: 12px 0;
+				border-color: transparent;
+			}
+			&::-ms-fill-upper {
+				@include pclbRangeTrackBBS;
+			}
+			&::-ms-fill-lower {
+				@include pclbRangeTrackBBS;
+			}
+			&::-ms-thumb {
+				@include pclbRangeThumb;
+				margin-top: 2px;
+			}
+			&:disabled::-webkit-slider-thumb, &:disabled::-moz-range-thumb, &:disabled::-ms-thumb, &:disabled::-webkit-slider-runnable-track, &:disabled::-ms-fill-lower, &:disabled::-ms-fill-upper {
+				cursor: not-allowed;
+			}
+		}
 
-        .pclbTotal{
-            display: flex;
-            align-items: center;
-            margin: 20px 0 10px;
+		.pclbTotal{
+			display: flex;
+			align-items: center;
+			margin: 20px 0 10px;
 
-            .pclbTotalPrice{
-                color: inherit;
-                width: auto;
-                margin: 0;
-                margin-right: 8px;
-            }
+			.pclbTotalPrice{
+				color: inherit;
+				width: auto;
+				margin: 0;
+				margin-right: 8px;
+			}
 
-            .pclbTotalLabel{
-                margin: 0;
-            }
-        }
-    }
+			.pclbTotalLabel{
+				margin: 0;
+			}
+		}
+	}
 }

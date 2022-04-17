@@ -28,10 +28,10 @@ const PriceCalculator = ({ attributes, isBackend = false, wp }) => {
 	}, [totalPriceRef, unitPrice, unitPriceQuery, currency, quantity]);
 
 	return <div className='pclbPriceCalculator'>
-		{isBackend ? <RichText className='pclbHeading' tagName='h2' value={heading} onChange={val => wp.setAttributes({ heading: val })} placeholder={__('Price Calculator', 'price-calculator')} inlineToolbar /> : heading && <h2 className='pclbHeading'>{heading}</h2>}
+		{isBackend ? <RichText className='pclbHeading' tagName='h2' value={heading} onChange={val => wp.setAttributes({ heading: val })} placeholder={__('Price Calculator', 'price-calculator')} inlineToolbar /> : heading && <RichText.Content className='pclbHeading' tagName='h2' value={heading} />}
 
 		<div className='pclbQuantity'>
-			{isBackend ? <RichText className='pclbQuantityLabel' tagName='label' value={quantityLabel} onChange={val => wp.setAttributes({ quantityLabel: val })} placeholder={__('Quantity Label:', 'price-calculator')} inlineToolbar /> : quantityLabel && <label className='pclbQuantityLabel'>{quantityLabel}</label>}
+			{isBackend ? <RichText className='pclbQuantityLabel' tagName='label' value={quantityLabel} onChange={val => wp.setAttributes({ quantityLabel: val })} placeholder={__('Quantity Label:', 'price-calculator')} inlineToolbar /> : quantityLabel && <RichText.Content className='pclbQuantityLabel' tagName='label' value={quantityLabel} />}
 
 			<p className='pclbQuantityAmount'>{quantity}</p>
 		</div>
@@ -41,7 +41,7 @@ const PriceCalculator = ({ attributes, isBackend = false, wp }) => {
 		<div className='pclbTotal'>
 			<p className='pclbTotalPrice' ref={totalPriceRef}></p>
 
-			{isBackend ? <RichText className='pclbTotalLabel' tagName='label' value={totalPriceLabel} onChange={val => wp.setAttributes({ totalPriceLabel: val })} placeholder={__('Total Price', 'price-calculator')} inlineToolbar /> : totalPriceLabel && <label className='pclbTotalLabel'>{totalPriceLabel}</label>}
+			{isBackend ? <RichText className='pclbTotalLabel' tagName='label' value={totalPriceLabel} onChange={val => wp.setAttributes({ totalPriceLabel: val })} placeholder={__('Total Price', 'price-calculator')} inlineToolbar /> : totalPriceLabel && <RichText.Content className='pclbTotalLabel' tagName='label' value={totalPriceLabel} />}
 		</div>
 	</div>
 }

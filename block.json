@@ -19,6 +19,10 @@
 			"type": "string",
 			"default": ""
 		},
+		"currency": {
+			"type": "string",
+			"default": "$"
+		},
 		"maxQuantity": {
 			"type": "number",
 			"default": 500
@@ -43,10 +47,6 @@
 		"totalPriceLabel": {
 			"type": "string",
 			"default": "total price"
-		},
-		"currency": {
-			"type": "string",
-			"default": "$"
 		},
 		"width": {
 			"type": "string",

@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from '@wordpress/element';
 import { RichText } from '@wordpress/block-editor';
 
 const PriceCalculator = ({ attributes, isBackend = false, wp }) => {
-	const { maxQuantity, unitPrice, unitPriceQuery, quantityLabel, totalPriceLabel, currency, heading } = attributes;
+	const { currency, maxQuantity, unitPrice, unitPriceQuery, quantityLabel, totalPriceLabel, heading } = attributes;
 
 	const [quantity, setQuantity] = useState(parseInt(maxQuantity / 2));
 	const totalPriceRef = useRef(null);

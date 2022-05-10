@@ -6,9 +6,9 @@ const Style = ({ attributes, clientId }) => {
 
 	return <style dangerouslySetInnerHTML={{
 		__html: `
-		${headingTypo?.googleFontLink ? `@import url(${headingTypo?.googleFontLink})` : ''}
-		${numberTypo?.googleFontLink ? `@import url(${numberTypo?.googleFontLink})` : ''}
-		${labelTypo?.googleFontLink ? `@import url(${labelTypo?.googleFontLink})` : ''}
+		${headingTypo?.googleFontLink ? `@import url(${headingTypo?.googleFontLink});` : ''}
+		${numberTypo?.googleFontLink ? `@import url(${numberTypo?.googleFontLink});` : ''}
+		${labelTypo?.googleFontLink ? `@import url(${labelTypo?.googleFontLink});` : ''}
 
 		#pclbPriceCalculator-${clientId}{
 			text-align: ${alignment};

@@ -1,5 +1,13 @@
 const gulp = require('gulp');
 const zip = require('gulp-zip');
+const del = require('del');
+
+gulp.task('clean', () => {
+	return del([
+		'languages',
+		'bundled'
+	]);
+});
 
 exports.bundle = () => (
 	gulp.src([

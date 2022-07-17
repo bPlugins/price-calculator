@@ -45,12 +45,12 @@ const Settings = ({ attributes, setAttributes }) => {
 				{'general' == tab.name && <>
 					<PanelBody className='bPlPanelBody help' title={__('Help', 'price-calculator')}>
 						<div className='helpItem'>
-							<a href='https://bblockswp.com/docs/price-calculator-block/' target='_blank' rel='noreferrer'><Dashicon icon='book' size={23} />{__('Read Documentation', 'price-calculator')}</a>
+							<a href='https://bblockswp.com/docs/price-calculator-block/' target='_blank' rel='noreferrer'><Dashicon icon='book' />{__('Read Documentation', 'price-calculator')}</a>
 						</div>
 
 						<div className='helpItem rateUs'>
 							<a href='https://wordpress.org/support/plugin/price-calculator/reviews/#new-post' target='_blank' rel='noreferrer'>
-								<span><Dashicon icon='star-filled' size={23} />{__('Would you please rate us?', 'price-calculator')}</span>
+								<span><Dashicon icon='star-filled' />{__('Would you please rate us?', 'price-calculator')}</span>
 								<span>{__('We are new and we need your help to grow!🙏', 'price-calculator')}</span>
 							</a>
 						</div>
@@ -80,7 +80,7 @@ const Settings = ({ attributes, setAttributes }) => {
 									<Button className='removeItem' label={__('Remove', 'price-calculator')} onClick={e => {
 										e.preventDefault();
 										setAttributes({ unitPriceQuery: [...unitPriceQuery.slice(0, index), ...unitPriceQuery.slice(index + 1)] });
-									}} ><Dashicon icon='no' size={18} />{__('Remove', 'price-calculator')}</Button>
+									}} ><Dashicon icon='no' />{__('Remove', 'price-calculator')}</Button>
 
 									<Button className='duplicateItem' label={__('Duplicate', 'price-calculator')} onClick={e => {
 										e.preventDefault();
@@ -91,7 +91,7 @@ const Settings = ({ attributes, setAttributes }) => {
 						})}
 
 						<div className='addItem'>
-							<Button label={__('Add New Price', 'price-calculator')} onClick={addPrice}><Dashicon icon='plus' size={23} />{__('Add New Price', 'price-calculator')}</Button>
+							<Button label={__('Add New Price', 'price-calculator')} onClick={addPrice}><Dashicon icon='plus' />{__('Add New Price', 'price-calculator')}</Button>
 						</div>
 					</PanelBody>
 				</>}

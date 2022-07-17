@@ -6,9 +6,13 @@
 	"scripts": {
 		"lint": "eslint src",
 		"start": "webpack --mode=development --watch",
-		"sync": "browser-sync start -p 'http://development.local/' --files '**/*.php' 'dist/*.js' 'dist/*.css'",
+		"sync": "browser-sync start -p 'http://localhost/' --files '**/*.php' 'dist/*.js' 'dist/*.css'",
 		"preview": "npm-run-all --parallel sync start",
-		"build": "npm run lint && webpack --mode=production && gulp bundle"
+		"i18n-pot": "wp i18n make-pot . languages/price-calculator.pot --exclude=\"src\" && cp ./languages/price-calculator.pot ./languages/price-calculator-en_US.po",
+		"i18n-json": "wp i18n make-json languages/ --no-purge",
+		"i18n-mo": "wp i18n make-mo languages/",
+		"i18n": "npm run i18n-pot && npm run i18n-json && npm run i18n-mo",
+		"build": "gulp clean && npm run lint && webpack --mode=production && npm run i18n && gulp bundle"
 	},
 	"author": "Wasek Bellah",
 	"license": "ISC",
@@ -46,7 +50,6 @@
 		"mini-css-extract-plugin": "^1.6.2",
 		"node-sass": "^5.0.0",
 		"npm-run-all": "^4.1.5",
-		"optimize-css-assets-webpack-plugin": "^5.0.8",
 		"postcss-loader": "^3.0.0",
 		"sass-loader": "^11.1.1",
 		"webpack": "^5.48.0",

@@ -35,6 +35,7 @@ module.exports = {
 		"react/react-in-jsx-scope": "off",
 		"react/display-name": "off",
 		'no-process-exit': 'off',
+		'no-unsafe-optional-chaining': 'off',
 		'object-shorthand': 'warn',
 		'class-methods-use-this': 'off',
 	}

@@ -91,13 +91,13 @@ $pclbRangeThumbSize: 24px;
 			}
 
 			// &:focus::-webkit-slider-runnable-track {
-			//     background-image: radial-gradient(#70777f, #40444f);
+			// 	background-image: radial-gradient(#70777f, #40444f);
 			// }
 			// &:focus::-ms-fill-upper {
-			//     background-image: radial-gradient(#70777f, #40444f);
+			// 	background-image: radial-gradient(#70777f, #40444f);
 			// }
 			// &:focus::-ms-fill-lower {
-			//     background-image: radial-gradient(#70777f, #40444f);
+			// 	background-image: radial-gradient(#70777f, #40444f);
 			// }
 			&::-webkit-slider-runnable-track {
 				@include pclbRangeTrack;

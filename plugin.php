@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Price Calculator - Block
  * Description: Calculate price of products based on quantity
- * Version: 1.0.7
+ * Version: 1.0.8
  * Author: bPlugins LLC
  * Author URI: http://bplugins.com
  * License: GPLv3
@@ -14,7 +14,7 @@
 if ( !defined( 'ABSPATH' ) ) { exit; }
 
 // Constant
-define( 'PCLB_PLUGIN_VERSION', isset($_SERVER['HTTP_HOST']) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.7' );
+define( 'PCLB_PLUGIN_VERSION', isset($_SERVER['HTTP_HOST']) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.8' );
 define( 'PCLB_ASSETS_DIR', plugin_dir_url( __FILE__ ) . 'assets/' );
 
 // Price Calculator
@@ -39,8 +39,11 @@ class PCLBPriceCalculator{
 	function render( $attributes ){
 		extract( $attributes );
 
+		$className = $className ?? '';
+		$pclbBlockClassName = 'wp-block-pclb-price-calculator ' . $className . ' align' . $align;
+
 		ob_start(); ?>
-		<div class='wp-block-pclb-price-calculator <?php echo 'align' . esc_attr( $align ); ?>' id='pclbPriceCalculator-<?php echo esc_attr( $cId ) ?>' data-attributes='<?php echo esc_attr( wp_json_encode( $attributes ) ); ?>'></div>
+		<div class='<?php echo esc_attr( $pclbBlockClassName ); ?>' id='pclbPriceCalculator-<?php echo esc_attr( $cId ) ?>' data-attributes='<?php echo esc_attr( wp_json_encode( $attributes ) ); ?>'></div>
 
 		<?php return ob_get_clean();
 	} // Render

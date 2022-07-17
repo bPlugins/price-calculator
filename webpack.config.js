@@ -1,7 +1,7 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
@@ -26,14 +26,7 @@ module.exports = (env, argv) => {
 				new TerserPlugin({
 					extractComments: false
 				}), // Minifying JS
-				new OptimizeCssAssetsPlugin({
-					cssProcessorOptions: {
-						map: {
-							inline: false,
-							annotations: true
-						}
-					}
-				}) // Minifying css
+				new CssMinimizerPlugin(), // Minifying css
 			]
 		}, // Optimization
 

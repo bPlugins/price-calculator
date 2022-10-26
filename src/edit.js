@@ -1,13 +1,17 @@
 import { useEffect } from '@wordpress/element';
 
+import { tabController } from '../../Components/Helper/functions';
+
 import Settings from './Settings';
 import Style from './Style';
 import PriceCalculator from './PriceCalculator';
 
 const Edit = props => {
-	const { className, attributes, setAttributes, clientId } = props;
+	const { className, attributes, setAttributes, clientId, isSelected } = props;
 
 	useEffect(() => { clientId && setAttributes({ cId: clientId.substring(0, 10) }); }, [clientId]); // Set & Update clientId to cId
+
+	useEffect(() => tabController(), [isSelected]);
 
 	return <>
 		<Settings attributes={props.attributes} setAttributes={setAttributes} />

@@ -59,7 +59,7 @@ const Settings = ({ attributes, setAttributes }) => {
 
 					<PanelBody className='bPlPanelBody addRemoveItems' title={__('Price Calculator Settings', 'price-calculator')}>
 						<PanelRow>
-							<Title mt='0' mb='0'>{__('Currency:', 'price-calculator')}</Title>
+							<Title className=''>{__('Currency:', 'price-calculator')}</Title>
 							<TextControl value={currency} onChange={val => setAttributes({ currency: val })} />
 						</PanelRow>
 

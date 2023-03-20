@@ -24,8 +24,8 @@ class PCLBPriceCalculator{
 	}
 
 	function onInit() {
-		wp_register_style( 'pclb-price-calculator-editor-style', plugins_url( 'dist/editor.css', __FILE__ ), [ 'wp-edit-blocks' ], PCLB_PLUGIN_VERSION ); // Backend Style
-		wp_register_style( 'pclb-price-calculator-style', plugins_url( 'dist/style.css', __FILE__ ), [], PCLB_PLUGIN_VERSION ); // Frontend Style
+		wp_register_style( 'pclb-price-calculator-editor-style', plugins_url( 'dist/editor.css', __FILE__ ), [ 'pclb-price-calculator-style' ], PCLB_PLUGIN_VERSION ); // Backend Style
+		wp_register_style( 'pclb-price-calculator-style', plugins_url( 'dist/style.css', __FILE__ ), [], PCLB_PLUGIN_VERSION ); // Style
 
 		register_block_type( __DIR__, [
 			'editor_style'		=> 'pclb-price-calculator-editor-style',
@@ -40,10 +40,10 @@ class PCLBPriceCalculator{
 		extract( $attributes );
 
 		$className = $className ?? '';
-		$pclbBlockClassName = 'wp-block-pclb-price-calculator ' . $className . ' align' . $align;
+		$blockClassName = 'wp-block-pclb-price-calculator ' . $className . ' align' . $align;
 
 		ob_start(); ?>
-		<div class='<?php echo esc_attr( $pclbBlockClassName ); ?>' id='pclbPriceCalculator-<?php echo esc_attr( $cId ) ?>' data-attributes='<?php echo esc_attr( wp_json_encode( $attributes ) ); ?>'></div>
+		<div class='<?php echo esc_attr( $blockClassName ); ?>' id='pclbPriceCalculator-<?php echo esc_attr( $cId ) ?>' data-attributes='<?php echo esc_attr( wp_json_encode( $attributes ) ); ?>'></div>
 
 		<?php return ob_get_clean();
 	} // Render

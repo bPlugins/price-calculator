@@ -3,10 +3,10 @@ import { registerBlockType } from '@wordpress/blocks';
 import metadata from '../block.json';
 import Edit from './Edit';
 import './editor.scss';
-import icons from './Const/icons';
+import { priceCalculatorIcon } from './utils/icons';
 
 registerBlockType(metadata, {
-	icon: icons.priceCalculator,
+	icon: priceCalculatorIcon,
 
 	// Build in Functions
 	edit: Edit,

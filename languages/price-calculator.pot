@@ -1,4 +1,4 @@
-# Copyright (C) 2022 bPlugins LLC
+# Copyright (C) 2023 bPlugins LLC
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-07-17T05:41:35+00:00\n"
+"POT-Creation-Date: 2023-03-20T17:13:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: price-calculator\n"
@@ -31,187 +31,175 @@ msgid "http://bplugins.com"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6162
+#: dist/editor.js:6173
 msgid "General"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6163
+#: dist/editor.js:6174
 msgid "Style"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6219
+#: dist/editor.js:6233
 msgid "Help"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6221
+#: dist/editor.js:6235
 msgid "Read Documentation"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6226
+#: dist/editor.js:6240
 msgid "Would you please rate us?"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6227
+#: dist/editor.js:6241
 msgid "We are new and we need your help to grow!🙏"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6233
+#: dist/editor.js:6247
 msgid "Price Calculator Settings"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6235
+#: dist/editor.js:6249
 msgid "Currency:"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6239
+#: dist/editor.js:6253
 msgid "Max Quantity:"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6241
-msgid "Per Unit Price"
-msgstr ""
-
-#: dist/editor.js:1
-#: dist/editor.js:6248
-msgid "After Quantity:"
-msgstr ""
-
-#: dist/editor.js:1
-#: dist/editor.js:6250
+#: dist/editor.js:6255
+#: dist/editor.js:6263
 msgid "Unit Price:"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6253
-#: dist/editor.js:6256
+#: dist/editor.js:6261
+msgid "After Quantity:"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:6266
 msgid "Remove"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6258
-#: dist/editor.js:6261
+#: dist/editor.js:6268
 msgid "Duplicate"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6267
+#: dist/editor.js:6274
 msgid "Add New Price"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/script.js:1
-#: dist/editor.js:6274
-#: dist/editor.js:6417
-#: dist/script.js:91
+#: dist/editor.js:6281
+#: dist/editor.js:6586
 msgid "Price Calculator"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6275
-#: dist/editor.js:6305
+#: dist/editor.js:6282
+#: dist/editor.js:6312
 msgid "Width:"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6276
+#: dist/editor.js:6283
 msgid "Keep width 0, to auto width."
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6278
+#: dist/editor.js:6285
 msgid "Background"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6280
+#: dist/editor.js:6287
 msgid "Padding:"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6282
+#: dist/editor.js:6289
 msgid "Border:"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6284
+#: dist/editor.js:6291
 msgid "Shadow:"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6288
+#: dist/editor.js:6295
 msgid "Heading"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6289
+#: dist/editor.js:6296
 msgid "Typography:"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6295
+#: dist/editor.js:6302
 msgid "Number & Label"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6296
+#: dist/editor.js:6303
 msgid "Number Typography:"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6298
+#: dist/editor.js:6305
 msgid "Label Typography:"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6304
+#: dist/editor.js:6311
 msgid "Quantity Range"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6307
+#: dist/editor.js:6314
 msgid "Track Background"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6309
+#: dist/editor.js:6316
 msgid "Thumb Background"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6320
+#: dist/editor.js:6327
 msgid "Price Calculator in left"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6321
+#: dist/editor.js:6328
 msgid "Price Calculator in center"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6322
+#: dist/editor.js:6329
 msgid "Price Calculator in right"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/script.js:1
-#: dist/editor.js:6420
-#: dist/script.js:94
+#: dist/editor.js:6589
 msgid "Quantity Label:"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/script.js:1
-#: dist/editor.js:6430
-#: dist/script.js:104
+#: dist/editor.js:6599
 msgid "Total Price"
 msgstr ""
 

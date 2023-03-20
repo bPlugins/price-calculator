@@ -1,56 +1,58 @@
+import { getBackgroundCSS, getBorderCSS, getShadowCSS, getSpaceCSS, getTypoCSS } from '../../Components/Helper/getCSS';
+
 const Style = ({ attributes, clientId }) => {
 	const { width, alignment, background, textAlign, padding, border, shadow, headingTypo, headingColor, numberTypo, labelTypo, numberLabelColor, rangeWidth, rangeTrackBG, rangeThumbBG } = attributes;
 
-	const rangeTrackBGStyle = rangeTrackBG?.styles || 'background-image: radial-gradient(#70777f, #40444f);';
-	const rangeThumbBGStyle = rangeThumbBG?.styles || 'background-image: radial-gradient(#70777f, #40444f);';
+	const mainSl = `#pclbPriceCalculator-${clientId}`;
+	const calculatorSl = `${mainSl} .pclbPriceCalculator`;
+	const quantitySl = `${calculatorSl} .pclbQuantity`;
+	const totalSl = `${calculatorSl} .pclbTotal`;
+	const quantityRangeSl = `${calculatorSl} .pclbQuantityRange`;
+
+	const rangeTrackBGStyle = getBackgroundCSS(rangeTrackBG);
+	const rangeThumbBGStyle = getBackgroundCSS(rangeThumbBG);
 
 	return <style dangerouslySetInnerHTML={{
 		__html: `
-		${headingTypo?.googleFontLink ? `@import url(${headingTypo?.googleFontLink});` : ''}
-		${numberTypo?.googleFontLink ? `@import url(${numberTypo?.googleFontLink});` : ''}
-		${labelTypo?.googleFontLink ? `@import url(${labelTypo?.googleFontLink});` : ''}
+		${getTypoCSS(`${calculatorSl} .pclbHeading`, headingTypo)}
+		${getTypoCSS(`${quantitySl} .pclbQuantityAmount, ${totalSl} .pclbTotalPrice`, numberTypo)}
+		${getTypoCSS(`${quantitySl} .pclbQuantityLabel, ${totalSl} .pclbTotalLabel`, labelTypo)}
 
-		#pclbPriceCalculator-${clientId}{
+		${mainSl}{
 			text-align: ${alignment};
 		}
-		#pclbPriceCalculator-${clientId} .pclbPriceCalculator{
+		${calculatorSl}{
 			width: ${'0px' === width || '0%' === width || '0em' === width ? 'auto' : width};
-			${background?.styles || 'background-color: #e3edf1;'}
+			${getBackgroundCSS(background)}
 			text-align: ${textAlign};
-			padding: ${padding?.styles || '25px 30px'};
-			${border?.styles || 'border-radius: 3px;'}
-			box-shadow: ${shadow?.styles || 'none'};
+			padding: ${getSpaceCSS(padding)};
+			${getBorderCSS(border)}
+			box-shadow: ${getShadowCSS(shadow)};
 		}
-		#pclbPriceCalculator-${clientId} .pclbPriceCalculator .pclbHeading{
-			${headingTypo?.styles || 'font-size: 28px;'}
+		${calculatorSl} .pclbHeading{
 			color: ${headingColor};
 		}
 		
-		#pclbPriceCalculator-${clientId} .pclbPriceCalculator .pclbQuantity, #pclbPriceCalculator-${clientId} .pclbPriceCalculator .pclbTotal{
+		${quantitySl},
+		${totalSl}{
 			color: ${numberLabelColor};
 		}
-		#pclbPriceCalculator-${clientId} .pclbPriceCalculator .pclbQuantity .pclbQuantityAmount, #pclbPriceCalculator-${clientId} .pclbPriceCalculator .pclbTotal .pclbTotalPrice{
-			${numberTypo?.styles || 'font-size: 20px; font-weight: 700;'}
-		}
-		#pclbPriceCalculator-${clientId} .pclbPriceCalculator .pclbQuantity .pclbQuantityLabel, #pclbPriceCalculator-${clientId} .pclbPriceCalculator .pclbTotal .pclbTotalLabel{
-			${labelTypo?.styles || 'font-size: 15px;'}
-		}
 
-		#pclbPriceCalculator-${clientId} .pclbPriceCalculator .pclbQuantityRange{
+		${quantityRangeSl}{
 			width: ${rangeWidth}
 		}
 
-		#pclbPriceCalculator-${clientId} .pclbPriceCalculator .pclbQuantityRange:focus::-webkit-slider-runnable-track{ ${rangeTrackBGStyle} }
-		#pclbPriceCalculator-${clientId} .pclbPriceCalculator .pclbQuantityRange:focus::-ms-fill-upper{ ${rangeTrackBGStyle} }
-		#pclbPriceCalculator-${clientId} .pclbPriceCalculator .pclbQuantityRange:focus:focus::-ms-fill-lower{ ${rangeTrackBGStyle} }
-		#pclbPriceCalculator-${clientId} .pclbPriceCalculator .pclbQuantityRange::-webkit-slider-runnable-track{ ${rangeTrackBGStyle} }
-		#pclbPriceCalculator-${clientId} .pclbPriceCalculator .pclbQuantityRange::-moz-range-track{ ${rangeTrackBGStyle} }
-		#pclbPriceCalculator-${clientId} .pclbPriceCalculator .pclbQuantityRange::-ms-fill-upper{ ${rangeTrackBGStyle} }
-		#pclbPriceCalculator-${clientId} .pclbPriceCalculator .pclbQuantityRange::-ms-fill-lower{ ${rangeTrackBGStyle} }
+		${quantityRangeSl}:focus::-webkit-slider-runnable-track{ ${rangeTrackBGStyle} }
+		${quantityRangeSl}:focus::-ms-fill-upper{ ${rangeTrackBGStyle} }
+		${quantityRangeSl}:focus:focus::-ms-fill-lower{ ${rangeTrackBGStyle} }
+		${quantityRangeSl}::-webkit-slider-runnable-track{ ${rangeTrackBGStyle} }
+		${quantityRangeSl}::-moz-range-track{ ${rangeTrackBGStyle} }
+		${quantityRangeSl}::-ms-fill-upper{ ${rangeTrackBGStyle} }
+		${quantityRangeSl}::-ms-fill-lower{ ${rangeTrackBGStyle} }
 
-		#pclbPriceCalculator-${clientId} .pclbPriceCalculator .pclbQuantityRange::-webkit-slider-thumb{ ${rangeThumbBGStyle} }
-		#pclbPriceCalculator-${clientId} .pclbPriceCalculator .pclbQuantityRange::-moz-range-thumb{ ${rangeThumbBGStyle} }
-		#pclbPriceCalculator-${clientId} .pclbPriceCalculator .pclbQuantityRange::-ms-thumb{ ${rangeThumbBGStyle} }
+		${quantityRangeSl}::-webkit-slider-thumb{ ${rangeThumbBGStyle} }
+		${quantityRangeSl}::-moz-range-thumb{ ${rangeThumbBGStyle} }
+		${quantityRangeSl}::-ms-thumb{ ${rangeThumbBGStyle} }
 		`.replace(/\s+/g, ' ')
 	}} />
 }

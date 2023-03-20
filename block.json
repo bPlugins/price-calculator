@@ -91,7 +91,11 @@
 		"headingTypo": {
 			"type": "object",
 			"default": {
-				"fontSize": 28
+				"fontSize": {
+					"desktop": 28,
+					"tablet": 24,
+					"mobile": 20
+				}
 			}
 		},
 		"headingColor": {
@@ -101,14 +105,22 @@
 		"numberTypo": {
 			"type": "object",
 			"default": {
-				"fontSize": 20,
+				"fontSize": {
+					"desktop": 20,
+					"tablet": 18,
+					"mobile": 16
+				},
 				"fontWeight": 700
 			}
 		},
 		"labelTypo": {
 			"type": "object",
 			"default": {
-				"fontSize": 15
+				"fontSize": {
+					"desktop": 15,
+					"tablet": 15,
+					"mobile": 15
+				}
 			}
 		},
 		"numberLabelColor": {

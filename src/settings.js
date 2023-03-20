@@ -1,6 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { AlignmentToolbar, BlockControls, InspectorControls } from '@wordpress/block-editor';
-import { TabPanel, PanelBody, PanelRow, RangeControl, TextControl, __experimentalUnitControl as UnitControl, __experimentalNumberControl as NumberControl, Button, Dashicon } from '@wordpress/components';
+import { TabPanel, PanelBody, PanelRow, TextControl, __experimentalUnitControl as UnitControl, __experimentalNumberControl as NumberControl, Button, Dashicon } from '@wordpress/components';
+import produce from 'immer';
 
 // Settings Components
 import Title from '../../Components/Title';
@@ -10,10 +11,10 @@ import SpaceControl from '../../Components/SpaceControl';
 import BorderControl from '../../Components/BorderControl';
 import ShadowControl from '../../Components/ShadowControl';
 import Typography from '../../Components/Typography';
+import { gearIcon } from '../../Components/Helper/icons';
+import { pxUnit, perUnit, emUnit } from '../../Components/Helper/options';
 
-import icons from './Const/icons';
-import options from './Const/options';
-const { generalStyleTabs, pxUnit, perUnit, emUnit } = options;
+import { generalStyleTabs } from './utils/options';
 
 const Settings = ({ attributes, setAttributes }) => {
 	const { currency, maxQuantity, unitPrice, unitPriceQuery, width, alignment, background, textAlign, padding, border, shadow, headingTypo, headingColor, numberTypo, labelTypo, numberLabelColor, rangeWidth, rangeTrackBG, rangeThumbBG } = attributes;
@@ -28,22 +29,33 @@ const Settings = ({ attributes, setAttributes }) => {
 	}
 
 	const updatePrice = (index, type, val, otherType = false) => {
-		const newUnitPriceQuery = [...unitPriceQuery];
+		const newUnitPriceQuery = produce(unitPriceQuery, draft => {
+			if (otherType) {
+				draft[index][type][otherType] = val;
+			} else {
+				draft[index][type] = val;
+			}
+		});
+		setAttributes({ unitPriceQuery: newUnitPriceQuery });
+	}
 
-		if (otherType) {
-			newUnitPriceQuery[index][type][otherType] = val;
-			setAttributes({ unitPriceQuery: newUnitPriceQuery });
-		} else {
-			newUnitPriceQuery[index][type] = val;
-			setAttributes({ unitPriceQuery: newUnitPriceQuery });
-		}
+	const duplicateUnitPriceQuery = (e, index) => {
+		e.preventDefault();
+
+		setAttributes({ unitPriceQuery: [...unitPriceQuery.slice(0, index), { ...unitPriceQuery[index] }, ...unitPriceQuery.slice(index)] });
+	}
+
+	const removeUnitPriceQuery = (e, index) => {
+		e.preventDefault();
+
+		setAttributes({ unitPriceQuery: [...unitPriceQuery.slice(0, index), ...unitPriceQuery.slice(index + 1)] });
 	}
 
 	return <>
 		<InspectorControls>
 			<TabPanel className='bPlTabPanel' activeClass='activeTab' tabs={generalStyleTabs}>{tab => <>
 				{'general' == tab.name && <>
-					<PanelBody className='bPlPanelBody help' title={__('Help', 'price-calculator')}>
+					<PanelBody className='bPlPanelBody help' title={__('Help', 'price-calculator')} initialOpen={false}>
 						<div className='helpItem'>
 							<a href='https://bblockswp.com/docs/price-calculator-block/' target='_blank' rel='noreferrer'><Dashicon icon='book' />{__('Read Documentation', 'price-calculator')}</a>
 						</div>
@@ -65,8 +77,7 @@ const Settings = ({ attributes, setAttributes }) => {
 
 						<NumberControl className='mt20' label={__('Max Quantity:', 'price-calculator')} labelPosition='left' value={maxQuantity} onChange={val => setAttributes({ maxQuantity: parseInt(val) })} />
 
-						<Title>{__('Per Unit Price', 'price-calculator')}</Title>
-						<RangeControl value={unitPrice} onChange={val => setAttributes({ unitPrice: val })} min={0} max={1000} step={0.01} />
+						<NumberControl label={__('Unit Price:', 'price-calculator')} labelPosition='left' className='mt20 mb20' value={unitPrice} onChange={val => setAttributes({ unitPrice: parseFloat(val) })} />
 
 						{unitPriceQuery.map((item, index) => {
 							const { afterQuantity, unitPrice } = item;
@@ -77,15 +88,9 @@ const Settings = ({ attributes, setAttributes }) => {
 								<NumberControl label={__('Unit Price:', 'price-calculator')} labelPosition='left' className='mt15' value={unitPrice} onChange={val => updatePrice(index, 'unitPrice', parseFloat(val))} />
 
 								<PanelRow className='itemAction mt20'>
-									<Button className='removeItem' label={__('Remove', 'price-calculator')} onClick={e => {
-										e.preventDefault();
-										setAttributes({ unitPriceQuery: [...unitPriceQuery.slice(0, index), ...unitPriceQuery.slice(index + 1)] });
-									}} ><Dashicon icon='no' />{__('Remove', 'price-calculator')}</Button>
+									<Button className='removeItem' label={__('Remove', 'price-calculator')} onClick={e => removeUnitPriceQuery(e, index)} ><Dashicon icon='no' />{__('Remove', 'price-calculator')}</Button>
 
-									<Button className='duplicateItem' label={__('Duplicate', 'price-calculator')} onClick={e => {
-										e.preventDefault();
-										setAttributes({ unitPriceQuery: [...unitPriceQuery, unitPriceQuery[index]] });
-									}} >{icons.gearSettings}{__('Duplicate', 'price-calculator')}</Button>
+									<Button className='duplicateItem' label={__('Duplicate', 'price-calculator')} onClick={e => duplicateUnitPriceQuery(e, index)} >{gearIcon}{__('Duplicate', 'price-calculator')}</Button>
 								</PanelRow>
 							</PanelBody>
 						})}
@@ -99,41 +104,41 @@ const Settings = ({ attributes, setAttributes }) => {
 
 				{'style' == tab.name && <>
 					<PanelBody className='bPlPanelBody' title={__('Price Calculator', 'price-calculator')}>
-						<UnitControl label={__('Width:', 'price-calculator')} labelPosition='left' value={width} onChange={val => setAttributes({ width: val })} units={[pxUnit, perUnit, emUnit]} />
+						<UnitControl label={__('Width:', 'price-calculator')} labelPosition='left' value={width} onChange={val => setAttributes({ width: val })} units={[pxUnit(550), perUnit(60), emUnit(35)]} isResetValueOnUnitChange={true} />
 						<small>{__('Keep width 0, to auto width.', 'price-calculator')}</small>
 
-						<Background label={__('Background', 'price-calculator')} background={background} onChange={val => setAttributes({ background: val })} defaults={{ color: '#e3edf1' }} />
+						<Background label={__('Background', 'price-calculator')} value={background} onChange={val => setAttributes({ background: val })} defaults={{ color: '#e3edf1' }} />
 
-						<SpaceControl className='mt20' label={__('Padding:', 'price-calculator')} space={padding} onChange={val => setAttributes({ padding: val })} defaults={{ vertical: '25px', horizontal: '30px' }} />
+						<SpaceControl className='mt20' label={__('Padding:', 'price-calculator')} value={padding} onChange={val => setAttributes({ padding: val })} defaults={{ vertical: '25px', horizontal: '30px' }} />
 
-						<BorderControl label={__('Border:', 'price-calculator')} border={border} onChange={val => setAttributes({ border: val })} defaults={{ radius: '3px' }} />
+						<BorderControl label={__('Border:', 'price-calculator')} value={border} onChange={val => setAttributes({ border: val })} defaults={{ radius: '3px' }} />
 
-						<ShadowControl label={__('Shadow:', 'price-calculator')} shadow={shadow} onChange={val => setAttributes({ shadow: val })} />
+						<ShadowControl label={__('Shadow:', 'price-calculator')} value={shadow} onChange={val => setAttributes({ shadow: val })} />
 					</PanelBody>
 
 
 					<PanelBody className='bPlPanelBody' title={__('Heading', 'price-calculator')} initialOpen={false}>
-						<Typography label={__('Typography:', 'price-calculator')} typography={headingTypo} onChange={val => setAttributes({ headingTypo: val })} defaults={{ fontSize: 28 }} />
+						<Typography label={__('Typography:', 'price-calculator')} value={headingTypo} onChange={val => setAttributes({ headingTypo: val })} defaults={{ fontSize: { desktop: 28, tablet: 24, mobile: 20 } }} produce={produce} />
 
 						<BColor value={headingColor} onChange={val => setAttributes({ headingColor: val })} defaultColor='#40444f' />
 					</PanelBody>
 
 
 					<PanelBody className='bPlPanelBody' title={__('Number & Label', 'price-calculator')} initialOpen={false}>
-						<Typography label={__('Number Typography:', 'price-calculator')} typography={numberTypo} onChange={val => setAttributes({ numberTypo: val })} defaults={{ fontSize: 20, fontWeight: 700 }} />
+						<Typography label={__('Number Typography:', 'price-calculator')} value={numberTypo} onChange={val => setAttributes({ numberTypo: val })} defaults={{ fontSize: { desktop: 20, tablet: 18, mobile: 16 }, fontWeight: 700 }} produce={produce} />
 
-						<Typography label={__('Label Typography:', 'price-calculator')} typography={labelTypo} onChange={val => setAttributes({ labelTypo: val })} defaults={{ fontSize: 15 }} />
+						<Typography label={__('Label Typography:', 'price-calculator')} value={labelTypo} onChange={val => setAttributes({ labelTypo: val })} defaults={{ fontSize: { desktop: 15, tablet: 15, mobile: 15 } }} produce={produce} />
 
 						<BColor value={numberLabelColor} onChange={val => setAttributes({ numberLabelColor: val })} defaultColor='#40444f' />
 					</PanelBody>
 
 
 					<PanelBody className='bPlPanelBody' title={__('Quantity Range', 'price-calculator')} initialOpen={false}>
-						<UnitControl label={__('Width:', 'price-calculator')} labelPosition='left' value={rangeWidth} onChange={val => setAttributes({ rangeWidth: val })} units={[pxUnit, perUnit, emUnit]} />
+						<UnitControl label={__('Width:', 'price-calculator')} labelPosition='left' value={rangeWidth} onChange={val => setAttributes({ rangeWidth: val })} units={[pxUnit(), perUnit(), emUnit()]} />
 
-						<Background label={__('Track Background', 'price-calculator')} background={rangeTrackBG} onChange={val => setAttributes({ rangeTrackBG: val })} defaults={{ type: 'gradient', gradient: 'radial-gradient(#70777f, #40444f)' }} isImage={false} />
+						<Background label={__('Track Background', 'price-calculator')} value={rangeTrackBG} onChange={val => setAttributes({ rangeTrackBG: val })} defaults={{ type: 'gradient', gradient: 'radial-gradient(#70777f, #40444f)' }} isImage={false} />
 
-						<Background label={__('Thumb Background', 'price-calculator')} background={rangeThumbBG} onChange={val => setAttributes({ rangeThumbBG: val })} defaults={{ type: 'gradient', gradient: 'radial-gradient(#70777f, #40444f)' }} isImage={false} />
+						<Background label={__('Thumb Background', 'price-calculator')} value={rangeThumbBG} onChange={val => setAttributes({ rangeThumbBG: val })} defaults={{ type: 'gradient', gradient: 'radial-gradient(#70777f, #40444f)' }} isImage={false} />
 
 						<small>{__('Some style may not work in editor/backend!')}</small>
 					</PanelBody>

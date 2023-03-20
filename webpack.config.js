@@ -2,7 +2,7 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const TerserPlugin = require("terser-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
@@ -35,7 +35,7 @@ module.exports = (env, argv) => {
 				cleanOnceBeforeBuildPatterns: [
 					'**/*',
 					'!editor.asset.php',
-					'!script.asset.php',
+					'!script.asset.php'
 				]
 			}), // Re generate 'dist' folder
 			new MiniCssExtractPlugin({

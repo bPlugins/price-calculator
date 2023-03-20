@@ -1,5 +1,5 @@
 <?php
 return [
-	'dependencies' => [ 'wp-block-editor', 'wp-element', 'lodash' ],
+	'dependencies' => [ 'react', 'react-dom', 'lodash' ],
 	'version' => PCLB_PLUGIN_VERSION
 ];

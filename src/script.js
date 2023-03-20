@@ -1,8 +1,9 @@
-import { render } from '@wordpress/element';
+import { useEffect, useRef, useState } from 'react';
+import { render } from 'react-dom';
 
 import './style.scss';
 import Style from './Style';
-import PriceCalculator from './PriceCalculator';
+import { calculatePriceQuery } from './utils/functions';
 
 // Price Calculator
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,3 +20,36 @@ document.addEventListener('DOMContentLoaded', () => {
 		priceCalculator?.removeAttribute('data-attributes');
 	});
 });
+
+const PriceCalculator = ({ attributes }) => {
+	const { currency, maxQuantity, unitPrice, unitPriceQuery, quantityLabel, totalPriceLabel, heading } = attributes;
+
+	const [quantity, setQuantity] = useState(parseInt(maxQuantity / 2));
+	const totalPriceRef = useRef(null);
+
+	useEffect(() => {
+		quantity > maxQuantity && setQuantity(maxQuantity);
+	}, [maxQuantity]);
+
+	useEffect(() => {
+		calculatePriceQuery(totalPriceRef.current, currency, unitPrice, unitPriceQuery, quantity);
+	}, [totalPriceRef, unitPrice, unitPriceQuery, currency, quantity]);
+
+	return <div className='pclbPriceCalculator'>
+		{heading && <h2 className='pclbHeading' dangerouslySetInnerHTML={{ __html: heading }} />}
+
+		<div className='pclbQuantity'>
+			{quantityLabel && <label className='pclbQuantityLabel' dangerouslySetInnerHTML={{ __html: quantityLabel }} />}
+
+			<p className='pclbQuantityAmount'>{quantity}</p>
+		</div>
+
+		<input className='pclbQuantityRange' type='range' value={quantity} onChange={e => setQuantity(parseInt(e.target.value))} min={1} max={maxQuantity} step={1} />
+
+		<div className='pclbTotal'>
+			<p className='pclbTotalPrice' ref={totalPriceRef}></p>
+
+			{totalPriceLabel && <label className='pclbTotalLabel' dangerouslySetInnerHTML={{ __html: totalPriceLabel }} />}
+		</div>
+	</div>
+}

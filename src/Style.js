@@ -14,9 +14,12 @@ const Style = ({ attributes, clientId }) => {
 
 	return <style dangerouslySetInnerHTML={{
 		__html: `
-		${getTypoCSS(`${calculatorSl} .pclbHeading`, headingTypo)}
-		${getTypoCSS(`${quantitySl} .pclbQuantityAmount, ${totalSl} .pclbTotalPrice`, numberTypo)}
-		${getTypoCSS(`${quantitySl} .pclbQuantityLabel, ${totalSl} .pclbTotalLabel`, labelTypo)}
+		${getTypoCSS('', headingTypo)?.googleFontLink}
+		${getTypoCSS('', numberTypo)?.googleFontLink}
+		${getTypoCSS('', labelTypo)?.googleFontLink}
+		${getTypoCSS(`${calculatorSl} .pclbHeading`, headingTypo)?.styles}
+		${getTypoCSS(`${quantitySl} .pclbQuantityAmount, ${totalSl} .pclbTotalPrice`, numberTypo)?.styles}
+		${getTypoCSS(`${quantitySl} .pclbQuantityLabel, ${totalSl} .pclbTotalLabel`, labelTypo)?.styles}
 
 		${mainSl}{
 			text-align: ${alignment};

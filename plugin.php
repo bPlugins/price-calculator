@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Price Calculator - Block
  * Description: Calculate price of products based on quantity
- * Version: 1.0.8
+ * Version: 1.0.9
  * Author: bPlugins LLC
  * Author URI: http://bplugins.com
  * License: GPLv3
@@ -14,7 +14,7 @@
 if ( !defined( 'ABSPATH' ) ) { exit; }
 
 // Constant
-define( 'PCLB_PLUGIN_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.8' );
+define( 'PCLB_PLUGIN_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.9' );
 define( 'PCLB_ASSETS_DIR', plugin_dir_url( __FILE__ ) . 'assets/' );
 
 // Price Calculator

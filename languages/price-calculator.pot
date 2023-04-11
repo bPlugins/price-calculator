@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Price Calculator - Block 1.0.8\n"
+"Project-Id-Version: Price Calculator - Block 1.0.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/price-calculator\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-03-20T17:13:21+00:00\n"
+"POT-Creation-Date: 2023-04-11T08:10:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: price-calculator\n"
@@ -103,7 +103,7 @@ msgstr ""
 
 #: dist/editor.js:1
 #: dist/editor.js:6281
-#: dist/editor.js:6586
+#: dist/editor.js:6588
 msgid "Price Calculator"
 msgstr ""
 
@@ -194,12 +194,12 @@ msgid "Price Calculator in right"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6589
+#: dist/editor.js:6591
 msgid "Quantity Label:"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6599
+#: dist/editor.js:6601
 msgid "Total Price"
 msgstr ""
 

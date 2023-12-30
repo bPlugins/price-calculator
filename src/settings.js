@@ -1,18 +1,12 @@
 import { __ } from '@wordpress/i18n';
 import { AlignmentToolbar, BlockControls, InspectorControls } from '@wordpress/block-editor';
 import { TabPanel, PanelBody, PanelRow, TextControl, __experimentalUnitControl as UnitControl, __experimentalNumberControl as NumberControl, Button, Dashicon } from '@wordpress/components';
-import produce from 'immer';
+import { produce } from 'immer';
 
 // Settings Components
-import Title from '../../Components/Title';
-import Background from '../../Components/Background';
-import BColor from '../../Components/BColor';
-import SpaceControl from '../../Components/SpaceControl';
-import BorderControl from '../../Components/BorderControl';
-import ShadowControl from '../../Components/ShadowControl';
-import Typography from '../../Components/Typography';
-import { gearIcon } from '../../Components/Helper/icons';
-import { pxUnit, perUnit, emUnit } from '../../Components/Helper/options';
+import { Label, Background, BColor, BorderControl, HelpPanel, ShadowControl, SpaceControl, Typography } from '../../Components';
+import { gearIcon } from '../../Components/utils/icons';
+import { pxUnit, perUnit, emUnit } from '../../Components/utils/options';
 
 import { generalStyleTabs } from './utils/options';
 
@@ -53,25 +47,18 @@ const Settings = ({ attributes, setAttributes }) => {
 
 	return <>
 		<InspectorControls>
+			<div className='pclbInspectorInfo'>
+				Need more block like this? Checkout the bundle ➡ <a href='https://wordpress.org/plugins/b-blocks' target='_blank' rel='noopener noreferrer'>B Blocks</a>
+			</div>
+
 			<TabPanel className='bPlTabPanel' activeClass='activeTab' tabs={generalStyleTabs}>{tab => <>
 				{'general' == tab.name && <>
-					<PanelBody className='bPlPanelBody help' title={__('Help', 'price-calculator')} initialOpen={false}>
-						<div className='helpItem'>
-							<a href='https://bblockswp.com/docs/price-calculator-block/' target='_blank' rel='noreferrer'><Dashicon icon='book' />{__('Read Documentation', 'price-calculator')}</a>
-						</div>
-
-						<div className='helpItem rateUs'>
-							<a href='https://wordpress.org/support/plugin/price-calculator/reviews/#new-post' target='_blank' rel='noreferrer'>
-								<span><Dashicon icon='star-filled' />{__('Would you please rate us?', 'price-calculator')}</span>
-								<span>{__('We are new and we need your help to grow!🙏', 'price-calculator')}</span>
-							</a>
-						</div>
-					</PanelBody>
+					<HelpPanel slug='price-calculator' docsLink='https://bblockswp.com/docs/price-calculator-block' />
 
 
 					<PanelBody className='bPlPanelBody addRemoveItems' title={__('Price Calculator Settings', 'price-calculator')}>
 						<PanelRow>
-							<Title className=''>{__('Currency:', 'price-calculator')}</Title>
+							<Label className=''>{__('Currency:', 'price-calculator')}</Label>
 							<TextControl value={currency} onChange={val => setAttributes({ currency: val })} />
 						</PanelRow>
 
@@ -118,16 +105,16 @@ const Settings = ({ attributes, setAttributes }) => {
 
 
 					<PanelBody className='bPlPanelBody' title={__('Heading', 'price-calculator')} initialOpen={false}>
-						<Typography label={__('Typography:', 'price-calculator')} value={headingTypo} onChange={val => setAttributes({ headingTypo: val })} defaults={{ fontSize: { desktop: 28, tablet: 24, mobile: 20 } }} produce={produce} />
+						<Typography label={__('Typography:', 'price-calculator')} value={headingTypo} onChange={val => setAttributes({ headingTypo: val })} defaults={{ fontSize: { desktop: 28, tablet: 24, mobile: 20 } }} />
 
 						<BColor value={headingColor} onChange={val => setAttributes({ headingColor: val })} defaultColor='#40444f' />
 					</PanelBody>
 
 
 					<PanelBody className='bPlPanelBody' title={__('Number & Label', 'price-calculator')} initialOpen={false}>
-						<Typography label={__('Number Typography:', 'price-calculator')} value={numberTypo} onChange={val => setAttributes({ numberTypo: val })} defaults={{ fontSize: { desktop: 20, tablet: 18, mobile: 16 }, fontWeight: 700 }} produce={produce} />
+						<Typography label={__('Number Typography:', 'price-calculator')} value={numberTypo} onChange={val => setAttributes({ numberTypo: val })} defaults={{ fontSize: { desktop: 20, tablet: 18, mobile: 16 }, fontWeight: 700 }} />
 
-						<Typography label={__('Label Typography:', 'price-calculator')} value={labelTypo} onChange={val => setAttributes({ labelTypo: val })} defaults={{ fontSize: { desktop: 15, tablet: 15, mobile: 15 } }} produce={produce} />
+						<Typography label={__('Label Typography:', 'price-calculator')} value={labelTypo} onChange={val => setAttributes({ labelTypo: val })} defaults={{ fontSize: { desktop: 15, tablet: 15, mobile: 15 } }} />
 
 						<BColor value={numberLabelColor} onChange={val => setAttributes({ numberLabelColor: val })} defaultColor='#40444f' />
 					</PanelBody>

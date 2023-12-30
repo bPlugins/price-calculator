@@ -1,9 +1,9 @@
-=== Price Calculator block - Calculate price of products based on quantity. ===
+=== Price Calculator block - Calculate the price of products based on quantity. ===
 Contributors: abuhayat, charlescormier
 Donate link: https://www.buymeacoffee.com/abuhayat
 Tags: block, price calculator, price calculate, quantity calculator, Gutenberg block
-Requires at least: 5.3+
-Tested up to: 6.2
+Requires at least: 6.2+
+Tested up to: 6.4.2
 Stable tag: 1.0.9
 Requires PHP: 7.1
 License: GPLv3 or later
@@ -14,7 +14,7 @@ Create and display pricing calculator sliders on your website.
 == Description ==
 
 Create and display pricing calculator sliders on your website. It supports all the options related to any price calculator.
-You can create different pricing rules on different quantities, e.g if you sell 1 unit with a price of 10 then you probably offer a discount when a customer buys 5 pice, so you can create a pricing rule on the basis of the quantity.
+You can create different pricing rules on different quantities, e.g. if you sell 1 unit with a price of 10 then you probably offer a discount when a customer buys 5 pice, so you can create a pricing rule on the basis of the quantity.
 
 
 **[Demos](https://bblockswp.com/demo/price-calculator/)**
@@ -25,16 +25,16 @@ You can create different pricing rules on different quantities, e.g if you sell 
 
 
 = How to use =
-- First install the Price Calculator block plugin
-- Add the Price Calculator block from the block category called "Widgets" in Gutenberg editor.
-- You can change block settings from the right side settings sidebar.
+- First, install the Price Calculator block plugin
+- Add the Price Calculator block from the block category called "Widgets" in the Gutenberg editor.
+- You can change block settings from the right-side settings sidebar.
 - Enjoy!
 
 * For installation help click on Installation Tab
 
 
 = Feedback =
-- Liked that plugin? Hate it? Want a new feature? [Send me some feedback](mailto:support@bplugins.com 'Send feedback')
+- Did you like this plugin? Dislike it? Have a feature request? [Please share your feedback with us](mailto:support@bplugins.com 'Send feedback')
 
 
 = ⭐ Check out the Parent Plugin of this plugin- =
@@ -77,7 +77,7 @@ You can create different pricing rules on different quantities, e.g if you sell 
 
 = Is Price Calculator block free? =
 
-Yes, Price Calculator block is a free Gutenberg block plugin.
+Yes, the Price Calculator block is a free Gutenberg block plugin.
 
 = Does it work with any WordPress theme? =
 

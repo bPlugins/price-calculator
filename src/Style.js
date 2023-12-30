@@ -1,4 +1,4 @@
-import { getBackgroundCSS, getBorderCSS, getShadowCSS, getSpaceCSS, getTypoCSS } from '../../Components/Helper/getCSS';
+import { getBackgroundCSS, getBorderCSS, getShadowCSS, getSpaceCSS, getTypoCSS } from '../../Components/utils/getCSS';
 
 const Style = ({ attributes, clientId }) => {
 	const { width, alignment, background, textAlign, padding, border, shadow, headingTypo, headingColor, numberTypo, labelTypo, numberLabelColor, rangeWidth, rangeTrackBG, rangeThumbBG } = attributes;
@@ -25,7 +25,7 @@ const Style = ({ attributes, clientId }) => {
 			text-align: ${alignment};
 		}
 		${calculatorSl}{
-			width: ${'0px' === width || '0%' === width || '0em' === width ? 'auto' : width};
+			width: ${['0px', '0%', '0em'].includes(width) ? 'auto' : width};
 			${getBackgroundCSS(background)}
 			text-align: ${textAlign};
 			padding: ${getSpaceCSS(padding)};

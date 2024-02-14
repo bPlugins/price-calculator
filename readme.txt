@@ -3,7 +3,7 @@ Contributors: abuhayat, charlescormier
 Donate link: https://www.buymeacoffee.com/abuhayat
 Tags: block, price calculator, price calculate, quantity calculator, Gutenberg block
 Requires at least: 6.2+
-Tested up to: 6.4.2
+Tested up to: 6.4.3
 Stable tag: 1.0.9
 Requires PHP: 7.1
 License: GPLv3 or later

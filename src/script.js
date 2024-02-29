@@ -1,23 +1,22 @@
 import { useEffect, useRef, useState } from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import './style.scss';
-import Style from './Style';
+import Style from './Components/Common/Style';
 import { calculatePriceQuery } from './utils/functions';
 
-// Price Calculator
 document.addEventListener('DOMContentLoaded', () => {
-	const allPriceCalculator = document.querySelectorAll('.wp-block-pclb-price-calculator');
-	allPriceCalculator.forEach(priceCalculator => {
-		const attributes = JSON.parse(priceCalculator.dataset.attributes);
+	const priceCalculatorEls = document.querySelectorAll('.wp-block-pclb-price-calculator');
+	priceCalculatorEls.forEach(priceCalculatorEl => {
+		const attributes = JSON.parse(priceCalculatorEl.dataset.attributes);
 
-		render(<>
+		createRoot(priceCalculatorEl).render(<>
 			<Style attributes={attributes} clientId={attributes.cId} />
 
 			<PriceCalculator attributes={attributes} />
-		</>, priceCalculator);
+		</>);
 
-		priceCalculator?.removeAttribute('data-attributes');
+		priceCalculatorEl?.removeAttribute('data-attributes');
 	});
 });
 

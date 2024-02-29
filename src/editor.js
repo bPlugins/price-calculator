@@ -1,7 +1,7 @@
 import { registerBlockType } from '@wordpress/blocks';
 
-import metadata from '../block.json';
-import Edit from './Edit';
+import metadata from '../inc/block.json';
+import Edit from './Components/Backend/Edit';
 import './editor.scss';
 import { priceCalculatorIcon } from './utils/icons';
 

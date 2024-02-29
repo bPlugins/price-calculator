@@ -19,7 +19,7 @@ export const bundle = () => gulp.src([
 	'!src/**',
 	'!.eslintrc.js',
 	'!.gitignore',
-	'!gulpfile.mjs'',
+	'!gulpfile.mjs',
 	'!package.json',
 	'!package-lock.json',
 	'!readme.md',

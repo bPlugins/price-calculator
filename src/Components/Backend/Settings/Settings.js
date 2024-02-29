@@ -3,12 +3,11 @@ import { AlignmentToolbar, BlockControls, InspectorControls } from '@wordpress/b
 import { TabPanel, PanelBody, PanelRow, TextControl, __experimentalUnitControl as UnitControl, __experimentalNumberControl as NumberControl, Button, Dashicon } from '@wordpress/components';
 import { produce } from 'immer';
 
-// Settings Components
-import { Label, Background, BColor, BorderControl, HelpPanel, ShadowControl, SpaceControl, Typography } from '../../Components';
-import { gearIcon } from '../../Components/utils/icons';
-import { pxUnit, perUnit, emUnit } from '../../Components/utils/options';
+import { Label, Background, BColor, BorderControl, HelpPanel, ShadowControl, SpaceControl, Typography } from '../../../../../Components';
+import { gearIcon } from '../../../../../Components/utils/icons';
+import { pxUnit, perUnit, emUnit } from '../../../../../Components/utils/options';
 
-import { generalStyleTabs } from './utils/options';
+import { generalStyleTabs } from '../../../utils/options';
 
 const Settings = ({ attributes, setAttributes }) => {
 	const { currency, maxQuantity, unitPrice, unitPriceQuery, width, alignment, background, textAlign, padding, border, shadow, headingTypo, headingColor, numberTypo, labelTypo, numberLabelColor, rangeWidth, rangeTrackBG, rangeThumbBG } = attributes;

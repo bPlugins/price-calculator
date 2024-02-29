@@ -158,6 +158,5 @@
 			"preview": true
 		}
 	},
-	"editorScript": "file:dist/editor.js",
-	"script": "file:dist/script.js"
+	"editorScript": "file:../dist/editor.js"
 }

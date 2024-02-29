@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 
-import Settings from './Settings';
-import Style from './Style';
-import { calculatePriceQuery } from './utils/functions';
+import Settings from './Settings/Settings';
+import Style from '../Common/Style';
+import { calculatePriceQuery } from '../../utils/functions';
 
 const Edit = props => {
 	const { className, attributes, setAttributes, clientId } = props;

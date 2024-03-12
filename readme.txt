@@ -44,15 +44,17 @@ You can create different pricing rules on different quantities, e.g. if you sell
 
 = ⭐ Check out our other WordPress Plugins- =
 
-🔥 **[Html5 Audio Player](https://bplugins.com/products/html5-audio-player)** – Best audio player plugin for WordPress.
+🔥 **[Html5 Audio Player](https://bplugins.com/products/html5-audio-player/)** – Play .mp3, .wav, and .ogg audio files in WordPress.
 
-🔥 **[Html5 Video Player](https://bplugins.com/products/html5-video-player)** – Best video player plugin for WordPress.
+🔥 **[Html5 Video Player](https://bplugins.com/products/html5-video-player/)** – Best video player plugin for WordPress.
 
-🔥 **[PDF Poster](https://bplugins.com/products/pdf-poster)** – A fully-featured PDF Viewer Plugin for WordPress.
+🔥 **[PDF Poster](https://bplugins.com/products/pdf-poster/)** – A fully-featured PDF Viewer Plugin for WordPress.
 
-🔥 **[StreamCast](https://bplugins.com/products/streamcast-radio-player)** – A fully-featured Radio Player Plugin for WordPress.
+🔥 **[Document Embedder](https://bplugins.com/products/document-embedder/)** – Embed Word, Excel, PowerPoint, Apple Pages, Psd, Pdf and more.
 
-🔥 **[3D Viewer](https://bplugins.com/products/3d-viewer)** – Display interactive 3D models on the webs.
+🔥 **[3D Viewer](https://bplugins.com/products/3d-viewer/)** – Display interactive 3D models on the webs.
+
+🔥 **[Advanced Post Block](https://bplugins.com/products/advanced-post-block/)** – Display your Posts, Custom Post Content and Blogs in a professional way!
 
 
 == Installation ==

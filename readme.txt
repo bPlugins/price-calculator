@@ -2,8 +2,8 @@
 Contributors: bplugins, abuhayat, charlescormier
 Donate link: https://www.buymeacoffee.com/abuhayat
 Tags: block, price calculator, price calculate, quantity calculator, Gutenberg block
-Requires at least: 6.2+
-Tested up to: 6.6.1
+Requires at least: 6.5+
+Tested up to: 6.7
 Stable tag: 1.1.0
 Requires PHP: 7.1
 License: GPLv3 or later
@@ -107,43 +107,6 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 
 
 == Changelog ==
-
-= 1.1.0 =
-* Fix render issue
-
-= 1.0.9 =
-* Reduce assets loads
-
-= 1.0.8 =
-* Add translate feature
-
-= 1.0.7 =
-* Fix Width
-
-= 1.0.6 =
-* Fix HTML Render
-
-= 1.0.5 =
-* Reduce PHP Code
-* Performance Improvement
-
-= 1.0.4 =
-* Reduce PHP Code
-
-= 1.0.3 =
-* Add option for currency
-
-= 1.0.2 =
-* Performance upgrade
-
-= 1.0.1 =
-* Fix Range Style
-
-= 1.0.0 =
-* Initial Release
-
-
-== Upgrade Notice ==
 
 = 1.1.0 =
 * Fix render issue

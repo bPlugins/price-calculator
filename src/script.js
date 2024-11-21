@@ -27,10 +27,6 @@ const PriceCalculator = ({ attributes }) => {
 	const totalPriceRef = useRef(null);
 
 	useEffect(() => {
-		quantity > maxQuantity && setQuantity(maxQuantity);
-	}, [maxQuantity]);
-
-	useEffect(() => {
 		calculatePriceQuery(totalPriceRef.current, currency, unitPrice, unitPriceQuery, quantity);
 	}, [totalPriceRef, unitPrice, unitPriceQuery, currency, quantity]);
 

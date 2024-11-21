@@ -3,9 +3,10 @@ import { AlignmentToolbar, BlockControls, InspectorControls } from '@wordpress/b
 import { TabPanel, PanelBody, PanelRow, TextControl, __experimentalUnitControl as UnitControl, __experimentalNumberControl as NumberControl, Button, Dashicon } from '@wordpress/components';
 import { produce } from 'immer';
 
-import { Label, Background, BColor, BorderControl, HelpPanel, ShadowControl, SpaceControl, Typography } from '../../../../../Components';
-import { gearIcon } from '../../../../../Components/utils/icons';
-import { pxUnit, perUnit, emUnit } from '../../../../../Components/utils/options';
+import { Label, Background, ColorControl, HelpPanel, Typography } from '../../../../../bpl-tools/Components';
+import { BorderControl, ShadowControl, SpaceControl } from '../../../../../bpl-tools/Components/Deprecated';
+import { gearIcon } from '../../../../../bpl-tools/utils/icons';
+import { pxUnit, perUnit, emUnit } from '../../../../../bpl-tools/utils/options';
 
 import { generalStyleTabs } from '../../../utils/options';
 
@@ -46,7 +47,7 @@ const Settings = ({ attributes, setAttributes }) => {
 
 	return <>
 		<InspectorControls>
-			<div className='pclbInspectorInfo'>
+			<div className='bPlInspectorInfo'>
 				Need more block like this? Checkout the bundle ➡ <a href='https://wordpress.org/plugins/b-blocks' target='_blank' rel='noopener noreferrer'>B Blocks</a>
 			</div>
 
@@ -106,7 +107,7 @@ const Settings = ({ attributes, setAttributes }) => {
 					<PanelBody className='bPlPanelBody' title={__('Heading', 'price-calculator')} initialOpen={false}>
 						<Typography label={__('Typography:', 'price-calculator')} value={headingTypo} onChange={val => setAttributes({ headingTypo: val })} defaults={{ fontSize: { desktop: 28, tablet: 24, mobile: 20 } }} />
 
-						<BColor value={headingColor} onChange={val => setAttributes({ headingColor: val })} defaultColor='#40444f' />
+						<ColorControl value={headingColor} onChange={val => setAttributes({ headingColor: val })} defaultColor='#40444f' />
 					</PanelBody>
 
 
@@ -115,7 +116,7 @@ const Settings = ({ attributes, setAttributes }) => {
 
 						<Typography label={__('Label Typography:', 'price-calculator')} value={labelTypo} onChange={val => setAttributes({ labelTypo: val })} defaults={{ fontSize: { desktop: 15, tablet: 15, mobile: 15 } }} />
 
-						<BColor value={numberLabelColor} onChange={val => setAttributes({ numberLabelColor: val })} defaultColor='#40444f' />
+						<ColorControl value={numberLabelColor} onChange={val => setAttributes({ numberLabelColor: val })} defaultColor='#40444f' />
 					</PanelBody>
 
 

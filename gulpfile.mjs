@@ -23,6 +23,7 @@ export const bundle = () => gulp.src([
 	'!package.json',
 	'!package-lock.json',
 	'!readme.md',
+	'!todo.txt',
 	'!webpack.config.js',
 ]).pipe(
 	zip('price-calculator.zip')

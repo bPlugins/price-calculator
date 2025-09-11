@@ -1,9 +1,9 @@
-=== Price Calculator block - Calculate the price of products based on quantity. ===
+=== Price Calculator Block – Calculate Price Based on Quantity or Options ===
 Contributors: bplugins, abuhayat, charlescormier
 Donate link: https://www.buymeacoffee.com/abuhayat
 Tags: block, price calculator, price calculate, quantity calculator, Gutenberg block
 Requires at least: 6.5+
-Tested up to: 6.8.1
+Tested up to: 6.8
 Stable tag: 1.1.0
 Requires PHP: 7.1
 License: GPLv3 or later

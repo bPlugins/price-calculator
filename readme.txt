@@ -131,13 +131,13 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 * Reduce PHP Code
 
 = 1.0.3 =
-* Add option for currency
+* Add option for currency.
 
 = 1.0.2 =
-* Performance upgrade
+* Performance upgrade.
 
 = 1.0.1 =
-* Fix Range Style
+* Fix Range Style.
 
 = 1.0.0 =
 * Initial Release.

@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import './style.scss';
 import Style from './Components/Common/Style';
 import { calculatePriceQuery } from './utils/functions';
+import { sanitizeHTML } from '../../bpl-tools/utils/common';
 
 document.addEventListener('DOMContentLoaded', () => {
 	const priceCalculatorEls = document.querySelectorAll('.wp-block-pclb-price-calculator');
@@ -11,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const attributes = JSON.parse(priceCalculatorEl.dataset.attributes);
 
 		createRoot(priceCalculatorEl).render(<>
-			<Style attributes={attributes} clientId={attributes.cId} />
+			<Style attributes={attributes} id={priceCalculatorEl.id} />
 
 			<PriceCalculator attributes={attributes} />
 		</>);
@@ -31,10 +32,10 @@ const PriceCalculator = ({ attributes }) => {
 	}, [totalPriceRef, unitPrice, unitPriceQuery, currency, quantity]);
 
 	return <div className='pclbPriceCalculator'>
-		{heading && <h2 className='pclbHeading' dangerouslySetInnerHTML={{ __html: heading }} />}
+		{heading && <h2 className='pclbHeading' dangerouslySetInnerHTML={{ __html: sanitizeHTML(heading) }} />}
 
 		<div className='pclbQuantity'>
-			{quantityLabel && <label className='pclbQuantityLabel' dangerouslySetInnerHTML={{ __html: quantityLabel }} />}
+			{quantityLabel && <label className='pclbQuantityLabel' dangerouslySetInnerHTML={{ __html: sanitizeHTML(quantityLabel) }} />}
 
 			<p className='pclbQuantityAmount'>{quantity}</p>
 		</div>
@@ -44,7 +45,7 @@ const PriceCalculator = ({ attributes }) => {
 		<div className='pclbTotal'>
 			<p className='pclbTotalPrice' ref={totalPriceRef}></p>
 
-			{totalPriceLabel && <label className='pclbTotalLabel' dangerouslySetInnerHTML={{ __html: totalPriceLabel }} />}
+			{totalPriceLabel && <label className='pclbTotalLabel' dangerouslySetInnerHTML={{ __html: sanitizeHTML(totalPriceLabel) }} />}
 		</div>
 	</div>
 }

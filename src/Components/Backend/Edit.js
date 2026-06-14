@@ -1,17 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 import { __ } from '@wordpress/i18n';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 import Settings from './Settings/Settings';
 import Style from '../Common/Style';
 import { calculatePriceQuery } from '../../utils/functions';
 
 const Edit = props => {
-	const { className, attributes, setAttributes, clientId } = props;
-
-	useEffect(() => { clientId && setAttributes({ cId: clientId.substring(0, 10) }); }, [clientId]); // Set & Update clientId to cId
+	const { attributes, setAttributes } = props;
 
 	const { currency, maxQuantity, unitPrice, unitPriceQuery, quantityLabel, totalPriceLabel, heading } = attributes;
+	const blockProps = useBlockProps();
 
 	const [quantity, setQuantity] = useState(parseInt(maxQuantity / 2));
 	const totalPriceRef = useRef(null);
@@ -27,8 +26,8 @@ const Edit = props => {
 	return <>
 		<Settings attributes={props.attributes} setAttributes={setAttributes} />
 
-		<div className={className} id={`pclbPriceCalculator-${clientId}`}>
-			<Style attributes={attributes} clientId={clientId} />
+		<div {...blockProps}>
+			<Style attributes={attributes} id={blockProps.id} />
 
 			<div className='pclbPriceCalculator'>
 				<RichText className='pclbHeading' tagName='h2' value={heading} onChange={val => setAttributes({ heading: val })} placeholder={__('Price Calculator', 'price-calculator')} inlineToolbar />

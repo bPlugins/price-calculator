@@ -4,8 +4,8 @@ Donate link: https://www.buymeacoffee.com/abuhayat
 Tags: block, price calculator, price calculate, quantity calculator, Gutenberg block
 Requires at least: 6.5
 Tested up to: 7.0
-Stable tag: 1.1.0
-Requires PHP: 7.1
+Stable tag: 1.1.1
+Requires PHP: 7.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -108,6 +108,9 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 
 == Changelog ==
 
+= 1.1.1 - 14 Jun 26 =
+* **Update:** Block API Version 3
+
 = 1.1.0 =
 * **Fix:** render issue
 
@@ -141,3 +144,20 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 
 = 1.0.0 =
 * Initial Release.
+
+
+== Source Code ==
+
+You can find the source code, report bugs, and contribute to the development of this plugin on our GitHub repository:
+[**Price Calculator on GitHub**](https://github.com/bPlugins/price-calculator)
+
+
+== Third-Party Libraries ==
+
+This plugin bundles the following third-party JavaScript libraries.
+
+= bpl-tools =
+* Source / GitHub: https://github.com/bPlugins/bpl-tools
+* License: GPL-2.0-or-later – https://www.gnu.org/licenses/gpl-2.0.html
+* Purpose: Shared utility library providing admin dashboard components and common Gutenberg editor controls.
+* External Services: The library may connect to bPlugins, WordPress.org, and Freemius services for product data and checkout functionality. See full details: https://github.com/bPlugins/bpl-tools#external-requests--why-they-are-made

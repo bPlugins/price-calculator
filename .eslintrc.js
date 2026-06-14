@@ -17,8 +17,7 @@ module.exports = {
 	globals: {
 		wp: 'readonly',
 		jQuery: 'readonly',
-		wpApiSettings: 'readonly',
-		prefixpipecheck: 'readonly'
+		lodash: 'readonly'
 	},
 	parserOptions: {
 		ecmaFeatures: {

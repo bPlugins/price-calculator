@@ -1,9 +1,9 @@
 import { getBackgroundCSS, getBorderCSS, getShadowCSS, getSpaceCSS, getTypoCSS } from '../../../../bpl-tools/utils/getCSS';
 
-const Style = ({ attributes, clientId }) => {
+const Style = ({ attributes, id }) => {
 	const { width, alignment, background, textAlign, padding, border, shadow, headingTypo, headingColor, numberTypo, labelTypo, numberLabelColor, rangeWidth, rangeTrackBG, rangeThumbBG } = attributes;
 
-	const mainSl = `#pclbPriceCalculator-${clientId}`;
+	const mainSl = `#${id}`;
 	const calculatorSl = `${mainSl} .pclbPriceCalculator`;
 	const quantitySl = `${calculatorSl} .pclbQuantity`;
 	const totalSl = `${calculatorSl} .pclbTotal`;
